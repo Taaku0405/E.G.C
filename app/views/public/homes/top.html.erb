@@ -1,2 +1,83 @@
-<h1>Public::Homes#top</h1>
-<p>Find me in app/views/public/homes/top.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+
+      <h4 class="text-center mt-2">
+        Welcom to <i class="fas fa-trophy"></i>Enjoy.Gaming.Community !!<br>
+        こちらのサイトではゲームをもっと楽しく遊んでいただけるように<br>
+        共通の仲間を見つけることができるコミュニティサイトになっています<br>
+        チームを作りたい人も、ゲーム仲間を募ってワイワイ楽しみたい人も<br>
+        これからゲームを始めたいと思ってる人も大歓迎です！<br>
+      　登録は簡単・無料となっていますのでぜひご活用ください！
+      </h4>
+
+      <div class="col-lg-10 m-5 p-5">
+      <div class="row">
+      <div id="myCarousel", class="carousel slide", data-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <%= image_tag "image1.jpg", style: "background-size: cover;", size: "850x280", class: "carousel_image" %>
+            <div class="carousel-caption d-md-block mb-5">
+            </div>
+          </div>
+
+          <div class="carousel-item">
+            <%= image_tag "image2.jpg", style: "background-size: cover;", size: "850x280", class: "carousel_image" %>
+            <div class="carousel-caption d-md-block mb-5">
+            </div>
+          </div>
+
+          <div class="carousel-item">
+            <%= image_tag "image3.jpg", style: "background-size: cover;", size: "850x280", class: "carousel_image" %>
+            <div class="carousel-caption d-md-block mb-5">
+            </div>
+          </div>
+
+          <div class="carousel-item">
+            <%= image_tag "image4.jpg", style: "background-size: cover;", size: "850x280", class: "carousel_image" %>
+            <div class="carousel-caption d-md-block mb-5">
+            </div>
+          </div>
+
+          <div class="carousel-item">
+            <%= image_tag "image5.jpg", style: "background-size: cover;", size: "850x280", class: "carousel_image" %>
+            <div class="carousel-caption d-md-block mb-5">
+            </div>
+          </div>
+
+          <div class="carousel-item">
+            <%= image_tag "image6.jpg", style: "background-size: cover;", size: "850x280", class: "carousel_image" %>
+            <div class="carousel-caption d-md-block mb-5">
+            </div>
+          </div>
+
+          <div class="carousel-item">
+            <%= image_tag "image7.jpg", style: "background-size: cover;", size: "850x280", class: "carousel_image" %>
+            <div class="carousel-caption d-md-block mb-5">
+            </div>
+          </div>
+        <a class="carousel-control-prev", href="#myCarousel", role="button", data-slide="prev">
+          <span class="carousel-control-prev-icon", aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next", href="#myCarousel", role="button", data-slide="next">
+          <sapn class="carousel-control-next-icon", aria-hidden="true"></sapn>
+          <sapn class="sr-only">Next</sapn>
+        </a>
+        </div>
+      </div>
+      </div>
+      </div>
+
+      <div class="btn-wrapper col-10 mx-auto">
+        <div class="row">
+          <%= link_to "ログイン", new_user_session_path, class: "btn btn-outline-info btn-block mb-3 sign_in" %>
+        </div>
+
+        <div class="row">
+          <%= link_to "新規登録", new_user_registration_path, class: "btn btn-outline-success btn-block sign_up" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

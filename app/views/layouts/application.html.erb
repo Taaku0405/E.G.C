@@ -1,16 +1,42 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>EGC</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>E.G.C</title>
+    <%= favicon_link_tag("logo-black.png") %>
+     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+    <header style="background-color: #00bfff">
+      <%= render "layouts/header" %>
+    </header>
+    <main class="pb-5">
+      <div class="text-center", style="height: 30px;">
+        <div id="flash_message", style="display: none;">
+          <%= render "layouts/flash_message" %>
+        </div>
+      </div>
     <%= yield %>
+    </main>
+    <div style="height: 100px;"></div>
+    <footer class="text-center", style="background-color: #00bfff">
+      <div class="container">
+        <div class="row">
+          <div class="mx-auto mt-3">
+            <p>©︎Enjoy.Gaming.Community.inc</p>
+            <i class="fab fa-steam"></i>
+            <i class="fab fa-xbox"></i>
+            <i class="fab fa-playstation"></i>
+            <i class="fab fa-twitch"></i>
+            <i class="fab fa-youtube"></i>
+          </div>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>

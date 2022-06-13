@@ -1,0 +1,87 @@
+<nav class="navbar navbar-expand-lg">
+  <div class="container">
+    <div class="navbar-brand">
+      <div class="py-1">
+        <%= link_to root_path do %>
+        <%= image_tag "E.G.C-logo.png", size: "150x70" %>
+        <% end %>
+      </div>
+    </div>
+
+    <% if user_signed_in? %>
+    <div class="center">
+      <p><%= current_user.name %>様ようこそ！</p>
+    </div>
+    <% end %>
+
+    <div class="d-flex align-items-end justify-content-center flex-column bg-highlight mb-3 mt-2", style="height: 80px;">
+      <ul class="navbar-nav mt-2">
+        <% if user_signed_in? %>
+        <li class="nav-link">
+          <%= link_to current_user, class: "btn" do %>
+          <i class="fas fa-user-secret"></i>マイページ
+          <% end %>
+        </li>
+
+        <li class="nav-link">
+          <%= link_to  users_path, class: "btn" do %>
+          <i class="fas fa-users"></i>会員一覧
+          <% end %>
+        </li>
+
+        <li class="nav-link ml-3">
+          <%= link_to posts_path, class: "btn" do %>
+          <i class="fas fa-gamepad"></i>ゲーム投稿一覧
+          <% end %>
+        </li>
+
+        <li class="nav-link">
+          <%= link_to groups_path, class: "btn" do %>
+          <i class="fas fa-biohazard"></i>グループ一覧
+          <% end %>
+        </li>
+
+        <li class="nav-link">
+          <%= link_to destroy_user_session_path, method: :delete, class: "btn" do %>
+          <i class="fas fa-sign-out-alt"></i>ログアウト
+          <% end %>
+        </li>
+
+        <% elsif admin_signed_in? %>
+
+        <li class="nav-link">
+          <%= link_to admin_posts_path, class: "btn" do %>
+          <i class="fas fa-gamepad"></i>ゲーム投稿一覧
+          <% end %>
+        </li>
+
+        <li class="nav-link">
+          <%= link_to admin_users_path, class: "btn" do %>
+          <i class="fas fa-users"></i>会員一覧
+          <% end %>
+        </li>
+
+        <li class="nav-link">
+          <%= link_to admin_genres_path, class: "btn" do %>
+          <i class="fas fa-dice-d20"></i>ジャンル一覧
+          <% end %>
+        </li>
+
+        <li class="nav-link">
+          <%= link_to destroy_admin_session_path, method: :delete, class: "btn" do %>
+           <i class="fas fa-sign-out-alt"></i>ログアウト
+           <% end %>
+        </li>
+
+        <% else %>
+
+        <li class="nav-link">
+          <%= link_to  public_homes_about_path, class: "btn" do %>
+          <i class="fab fa-phoenix-framework"></i>About
+          <% end %>
+        </li>
+      </ul>
+      <% end %>
+    </div>
+  </div>
+</nav>
