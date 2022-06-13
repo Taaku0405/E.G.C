@@ -1,0 +1,31 @@
+<div class="container">
+  <h3 class="d-inline-block px-4 mx-5 mb-3 text-primary"><i class="fas fa-gamepad"></i>ゲーム投稿一覧</h3>
+  <div class="text-center mb-4">
+    <%= link_to new_post_path do %>
+    <i class="fas fa-plus-square"></i>
+    <i class="text-primary">ゲームを新規投稿する</i>
+    <% end %>
+  </div>
+
+  <div class="row">
+    <div class="col-2">
+    <%= render "sidebar", genres: @genres %>
+    </div>
+
+    <div class="col-8">
+      <h4 class="text-center mb-4"><i class="fas fa-ghost"></i>投稿一覧(全<%= @posts.count %>件)</h4>
+      <div class="post_index d-flex flex-wrap">
+        <% @posts.each do |post| %>
+        <div class="post_box mr-3">
+          <%= image_tag post.user.get_profile_image(200,200) %>
+          <%= link_to post_path(post) do %>
+          <% end %>
+          <br><div class="badge">タイトル<%= post.name %></div>
+          <br><div class="badge">投稿者<%= post.user.name %></div>
+          <br><div class="badge">投稿日<%= post.created_at.strftime('%Y/%m/%d %H:%M:%S') %></div>
+        </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

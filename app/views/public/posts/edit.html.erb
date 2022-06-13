@@ -1,0 +1,28 @@
+<div class="container">
+  <div id="error">
+    <%= render "layouts/error_messages", model: @item%>
+  </div>
+
+  <h3 class="d-inline-block px-4 mx-5 mb-3 text-primary"><i class="fab fa-fantasy-flight-games"></i>投稿内容の編集</h3>
+
+  <%= form_with model: @post, url: post_path(@post), local: :true do |f| %>
+
+  <div class="form-group">
+    <strong><%= f.label :"ゲーム名", class: "col-sm-3 col-form-label" %></strong>
+    <span><%= f.text_field :name, placeholder: "ゲーム名を入力" %></span>
+  </div>
+
+  <div class="form-group">
+    <storong><%= f.label :"ゲーム詳細", class: "col-sm-3 col-form-label" %></storong>
+    <span><%= f.text_area :introduction, placeholder: "ゲームのおすすめポイントや詳細を記述" %></span>
+  </div>
+
+  <div class="form-group">
+    <strong><%= f.label :"ゲームジャンル", class: "col-sm-3 col-form-label" %></strong>
+    <span><%= <%= f.collection_select :genre_id, @genres, :id, :name, {prompt: "選択してください", class: "form-control"} %></span>
+  </div>
+
+  <div class="form-group">
+    <%= f.submit "変更を更新する", class: "btn btn-outline-success px-5" %>
+  </div>
+</div>

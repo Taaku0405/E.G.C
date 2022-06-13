@@ -1,0 +1,21 @@
+<div class="container">
+  <div id="error">
+    <%= render "layouts/error_messages", model: @genre %>
+  </div>
+
+  <div class="row">
+    <h3 class="d-inline-block px-4 mx-5 mb-3 text-primary"><i class="fas fa-dice-d20"></i> ゲームジャンルの一覧ページ</h3>
+  </div>
+
+  <div class="col-lg-8">
+    <%= form_with model: @genre, url: admin_genres_path, method: :post, class: "js-form", local: false do |f| %>
+    <strong><%= f.label :"ジャンル名", class: "col-sm-3 col-form-label" %></strong>
+    <span class="mr-5"><%= f.text_field :name, placeholder: "ジャンル名", class: "genre-form" %></span>
+    <%= f.submit "新しく追加する", class: "btn btn-outline-success px-5" %>
+    <% end %>
+  </div>
+
+  <div id="index">
+    <%= render "index", genres: @genres %>
+  </div>
+</div>

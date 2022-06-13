@@ -1,0 +1,37 @@
+<div class="container">
+  <h3 class="d-inline-block px-4 mx-5 mb-3 text-primary"><i class="fas fa-users"></i> 会員一覧</h3>
+
+  <div class="card-header"><i class="fas fa-user-secret"></i>エンドユーザー</div>
+  <table class="table table-borderless table-hover">
+  <thead class="bg-info">
+    <tr>
+      <th>ユーザーID</th>
+      <th>ニックネーム</th>
+      <th>メールアドレス</th>
+      <th>ステータス</th>
+    </tr>
+    <tbody>
+      <% @users.each do |user| %>
+      <tr>
+        <td><%= user.id %></td>
+        <td>
+          <%= link_to  admin_user_path(user.id) do %>
+          <%= end_user.name %>
+          <% end %>
+        </td>
+        <td><%= user.email %></td>
+        <% if user.is_deleted == false %>
+        <td class="text-success"><strong>有効</strong></td>
+        <% else %>
+        <td class="text-secondary"><strong>退会</strong></td>
+        <% end %>
+      </tr>
+      <% end %>
+    </tbody>
+  </thead>
+  </table>
+
+  <div class="paginate d-flex justify-content-center">
+
+  </div>
+</div>

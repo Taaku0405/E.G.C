@@ -1,0 +1,26 @@
+<div class="container">
+  <h3 class="d-inline-block px-4 mx-5 mb-3 text-primary"><i class="fas fa-user-secret"></i>会員詳細</h3>
+  <div class="row px-5 mt-4">
+    <h4 class="col-2">登録情報</h4>
+    <%= link_to "編集する", edit_user_path, class: "btn btn-outline-success px-5" %></td>
+  </div>
+
+  <div class="row my-4 px-5">
+    <table class="table table-bordered col-6 mb-5">
+      <tr>
+        <th class="bg-info">ニックネーム</th>
+        <td><%= @user.name %></td>
+      </tr>
+      <tr>
+        <th class="bg-info">紹介</th>
+        <td><%= @user.introduction %></td>
+      </tr>
+    </table>
+
+    <div class="col-5 offset-1">
+      <div class="row">
+        <%= image_tag @user.get_profile_image, size:"250x150" %>
+      </div>
+    </div>
+  </div>
+</div>

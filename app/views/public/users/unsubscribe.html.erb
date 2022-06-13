@@ -1,0 +1,14 @@
+<div class="container">
+  <h3 class="text-center mb-5 text-danger"><i class="fas fa-exclamation-circle"></i><strong>本当に退会しますか？</h3>
+  <h4 class="text-center">
+    退会すると閲覧が不可となり投稿、グループの内容も全て消えてしまいます<br>
+    退会される場合は『退会する』のボタンを押して進んでください<br>
+    退会されない場合は『退会しない』のボタンをを押して進んでください
+  </h4>
+
+  <div class="d-flex justify-content-center mt-5">
+    <%= link_to "退会しない", user_path, class: "btn btn-outline-info btn-block mb-3" %>
+    <%= link_to "退会する", withdraw_path, method: :patch, data: { confilm: "本当に退会しますか？" }, class: "btn btn-outline-danger btn-block mb-3" %>
+  </div>
+
+</div>

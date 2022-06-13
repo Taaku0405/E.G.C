@@ -3,7 +3,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-         
+
   has_many :posts
   has_many :post_comments, dependent: :destroy
   has_many :group_users, dependent: :destroy
@@ -23,4 +23,10 @@ class User < ApplicationRecord
   def get_profile_image
     (profile_image.attached?) ? profile_image : "no_image.jpg"
   end
+
+  #正規ユーザーのみを認める記述
+  def active_for_authentication?
+   super && (is_deleted == false)
+  end
+
 end

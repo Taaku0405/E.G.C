@@ -1,0 +1,31 @@
+<div class="container">
+  <h3 class="d-inline-block px-4 mx-5 mb-3 text-primary"><i class="fas fa-user-secret"></i><%= @user.name %>さんの会員詳細</h3>
+
+  <table class="my-3">
+    <tbody>
+      <tr><%= image_tag user.get_profile_image, size:"100x100" %></tr>
+      <tr>
+        <td>会員ID</td>
+        <td><%= user.id %></td>
+      </tr>
+      <tr>
+        <td>ニックネーム</td>
+        <td><%= user.name %></td>
+      </tr>
+      <tr>
+        <td>メールアドレス</td>
+        <td><%= user.email %></td>
+      </tr>
+      <tr>
+        <td>ステータス</td>
+        <% if user.is_deleted == false %>
+        <td class="text-success"><strong>有効</strong></td>
+        <% else %>
+        <td class="text-secondary"><strong>退会</strong></td>
+        <% end %>
+      </tr>
+    </tbody>
+  </table>
+
+  <%= link_to "会員情報を編集", edit_admin_user_path(@user.id), class: "btn btn-outline-success px-5 offset-2" %>
+</div>

@@ -1,0 +1,29 @@
+<div class="container">
+  <div id="error">
+    <%= render "layouts/error_messages", model: @post %>
+  </div>
+
+  <h3 class="d-inline-block px-4 mx-5 mb-3 text-primary"><i class="fas fa-hat-wizard"></i>新規ゲーム投稿</h3>
+
+    <%= form_with model: @post, url: posts_path, method: :post do |f| %>
+
+    <div class="form-group mb-5">
+      <strong><%= f.label :"ゲーム名", class: "col-sm-3 col-form-label" %></strong>
+      <span><%= f.text_field :name, placeholder: "ゲーム名を入力" %></span>
+    </div>
+
+    <div class="form-group mb-5">
+      <strong><%= f.label :"ゲーム詳細", class: "col-sm-3 col-form-label" %></strong>
+      <span><%= f.text_area :introduction, placeholder: "ゲームのおすすめポイントや詳細を記述" %></span>
+    </div>
+
+    <div class="form-group mb-5">
+      <strong><%= f.label :"ゲームジャンル", class: "col-sm-3 col-form-label" %></strong>
+      <span> <%= f.collection_select(:genre_id, @genres, :id, :name, {prompt: "選択してください", class: 'form-control'}) %></span>
+    </div>
+
+    <div class="form-group mb-5">
+      <%= f.submit "新規投稿する", class: "btn btn-outline-warning px-5" %>
+    </div>
+    <% end %>
+</div>

@@ -1,0 +1,35 @@
+<div class="container">
+  <div id="error">
+    <%= render 'layouts/error_messages', model: @user %>
+  </div>
+
+  <h3 class="d-inline-block px-4 mx-5 mb-3 text-primary"><i class="fas fa-user-edit"></i>プロフィール編集</h3>
+
+  <%= form_with model: @user, url: user_path(@user), local: :true do |f| %>
+
+  <div class="form-group">
+    <strong><%= f.label :"ニックネーム", class: "col-sm-3 col-form-label" %></strong>
+    <span><%= f.text_field :name, placeholder: "ニックネームを入力" %></span>
+  </div>
+
+  <div class="form-group">
+    <strong><%= f.label :"自己紹介", class: "col-sm-3 col-form-lable" %></strong>
+    <span><%= f.text_area :introduction, placeholder: "ここに自己紹介を記述してください" %></span>
+  </div>
+
+  <div class="form-group">
+    <strong><%= f.label :"プロフィール写真", class: "col-sm-3 col-form-label" %></strong>
+    <span><%= f.file_field :profile_image, placeholder: "プロフィール画像", accept: "image/*" %></span>
+  </div>
+
+  <div class="form-group">
+    <strong><%= f.label :"メールアドレス", class: "col-sm-3 col-form-label" %></strong>
+    <span><%= f.email_field :email, placeholder: "sample@example.com" %></span>
+  </div>
+
+  <div class="row justify-content-center mb-5">
+    <%= f.submit "変更を更新する", class: "btn btn-outline-success px-5" %>
+    <%= link_to '退会する', unsubscribe_path, class: "btn btn-outline-danger" %>
+  </div>
+  <% end %>
+</div>
