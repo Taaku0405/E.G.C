@@ -24,7 +24,7 @@ class User < ApplicationRecord
     if profile_image.attached?
       profile_image
     else
-      'no_image.jpg'
+      "no_image.jpg"
     end
   end
 

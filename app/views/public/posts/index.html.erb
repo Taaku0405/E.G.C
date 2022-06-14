@@ -17,8 +17,8 @@
       <div class="post_index d-flex flex-wrap">
         <% @posts.each do |post| %>
         <div class="post_box mr-3">
-          <%= image_tag post.user.get_profile_image(200,200) %>
           <%= link_to post_path(post) do %>
+          <%= image_tag "E.G.C-logo.png", size:"150x100" %>
           <% end %>
           <br><div class="badge">タイトル<%= post.name %></div>
           <br><div class="badge">投稿者<%= post.user.name %></div>

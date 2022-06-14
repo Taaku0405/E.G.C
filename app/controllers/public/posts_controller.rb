@@ -25,8 +25,11 @@ class Public::PostsController < ApplicationController
     @genres = Genre.all
     @post = Post.new(post_params)
     @post.user_id = current_user.id
-    @post.save
-    redirect_to posts_path
+    if @post.save
+      redirect_to posts_path, notice: "ゲーム投稿を登録しました"
+    else
+      render :new
+    end
   end
 
   def update

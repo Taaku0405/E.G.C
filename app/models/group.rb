@@ -9,8 +9,12 @@ class Group < ApplicationRecord
   validates :name, presence: true
   validates :introduction, presence: true
 
-  def get_image
-    (image.attached?) ? image : "no_image.jpg"
+  def get_group_image
+    if group_image.attached?
+      group_image
+    else
+      "E.G.C-logo.png"
+    end
   end
 
   def is_owned_by?(user)
