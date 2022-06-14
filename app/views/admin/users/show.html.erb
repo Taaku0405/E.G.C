@@ -3,22 +3,22 @@
 
   <table class="my-3">
     <tbody>
-      <tr><%= image_tag user.get_profile_image, size:"100x100" %></tr>
+      <tr><%= image_tag @user.get_profile_image, size:"100x100" %></tr>
       <tr>
         <td>会員ID</td>
-        <td><%= user.id %></td>
+        <td><%= @user.id %></td>
       </tr>
       <tr>
         <td>ニックネーム</td>
-        <td><%= user.name %></td>
+        <td><%= @user.name %></td>
       </tr>
       <tr>
         <td>メールアドレス</td>
-        <td><%= user.email %></td>
+        <td><%= @user.email %></td>
       </tr>
       <tr>
         <td>ステータス</td>
-        <% if user.is_deleted == false %>
+        <% if @user.is_deleted == false %>
         <td class="text-success"><strong>有効</strong></td>
         <% else %>
         <td class="text-secondary"><strong>退会</strong></td>

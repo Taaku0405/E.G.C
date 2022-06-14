@@ -1,6 +1,6 @@
 class Public::PostsController < ApplicationController
   before_action :authenticate_user!
-  
+
   def new
     @post = Post.new
     @genres = Genre.all
@@ -13,6 +13,7 @@ class Public::PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+    @post_comment = PostComment.new
   end
 
   def edit
@@ -23,11 +24,9 @@ class Public::PostsController < ApplicationController
   def create
     @genres = Genre.all
     @post = Post.new(post_params)
-    if @post.save
-      redirect_to posts_path, notice: "ゲーム投稿を登録しました"
-    else
-      render :new
-    end
+    @post.user_id = current_user.id
+    @post.save
+    redirect_to posts_path
   end
 
   def update
@@ -54,6 +53,7 @@ class Public::PostsController < ApplicationController
   end
 
   private
+
   def post_params
     params.require(:post).permit(:name, :introduction, :genre_id)
   end

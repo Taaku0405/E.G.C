@@ -8,11 +8,6 @@
       </div>
     </div>
 
-    <% if user_signed_in? %>
-    <div class="center">
-      <p><%= current_user.name %>様ようこそ！</p>
-    </div>
-    <% end %>
 
     <div class="d-flex align-items-end justify-content-center flex-column bg-highlight mb-3 mt-2", style="height: 80px;">
       <ul class="navbar-nav mt-2">
@@ -76,7 +71,7 @@
         <% else %>
 
         <li class="nav-link">
-          <%= link_to  public_homes_about_path, class: "btn" do %>
+          <%= link_to public_homes_about_path, class: "btn" do %>
           <i class="fab fa-phoenix-framework"></i>About
           <% end %>
         </li>

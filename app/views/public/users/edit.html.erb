@@ -32,4 +32,11 @@
     <%= link_to '退会する', unsubscribe_path, class: "btn btn-outline-danger" %>
   </div>
   <% end %>
+
+  <% if @user.name != "ゲストユーザー" %>
+  <div class='row'>
+    <%= link_to '',edit_user_path(user),class: "btn btn-outline-secondary btn-block fas fa-user-cog edit_user_#{user.id}" %>
+  </div>
+  <% end %>
+
 </div>
