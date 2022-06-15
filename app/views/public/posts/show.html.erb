@@ -3,7 +3,7 @@
 
   <div class="row">
     <div class="col-lg-3">
-     <%= image_tag "E.G.C-logo.png", size:"150x100" %>
+     <%= image_tag "E.G.C-logo.png", size:"400x400" %>
     </div>
     <div class="col-lg-7 offset-lg-2">
       <table class="table table-borderless">
@@ -27,10 +27,46 @@
           <th>投稿日</th>
           <td><%= @post.created_at.strftime('%Y/%m/%d %H:%M:%S') %></td>
         </tr>
+        <tr>
+          <th>いいね</th>
+          <td>
+          <% if @post.favorited_by?(current_user) %>
+          <%= link_to post_favorites_path(@post), method: :delete do %>
+          <i class="fas fa-heart" aria-hidden="true" style="color: red;"></i>
+          <%= @post.favorites.count %>
+          <% end %>
+          </p>
+          <% else %>
+          <p>
+            <%= link_to post_favorites_path(@post), method: :post do %>
+            <i class="fas fa-heart" aria-hidden="true"></i>
+            <%= @post.favorites.count %>
+          <% end %>
+          </p>
+          <% end %>
+          </td>
+        </tr>
+        <tr>
+          <th>コメント件数：<%= @post.post_comments.count %></th>
+          <td>
+            <% @post.post_comments.each do |post_comment| %>
+            <p><%= post_comment.user.name %></p>
+            <%= post_comment.created_at.strftime('%Y/%m/%d') %>
+            <%= post_comment.comment %>
+            <% if post_comment.user == current_user %>
+            <%= link_to "コメントを削除", post_post_comment_path(@post, post_comment), method: :delete, class: "btn btn-danger pull-right", remote: true %>
+            <% end %>
+            <% end %>
+            <%= form_with model: [@post, @post_comment] do |f| %>
+            <%= f.text_area :comment, rows: '5', placeholder: "コメントを入力" %>
+            <%= f.submit "送信する" %>
+            <% end %>
+          </td>
+        </tr>
       </table>
 
       <div class="text-center">
-         <%= link_to "投稿情報を削除する", posts_path(@post), method: :delete, class: "btn btn-outline-danger px-5" %>
+         <%= link_to "投稿情報を削除する", @post, method: :delete, class: "btn btn-outline-danger px-5" %>
         <%= link_to "投稿を編集する", edit_post_path(@post), class: "btn btn-outline-success px-5 offset-2" %>
       </div>
     </div>

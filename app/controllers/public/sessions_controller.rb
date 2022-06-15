@@ -1,8 +1,7 @@
 # frozen_string_literal: true
 
 class Public::SessionsController < Devise::SessionsController
-  #サインインする前にend_user_stateを実行する
-  before_action :user_state, only: [:create]
+
   # before_action :configure_sign_in_params, only: [:create]
 
   # GET /resource/sign_in
