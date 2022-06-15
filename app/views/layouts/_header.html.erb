@@ -75,8 +75,38 @@
           <i class="fab fa-phoenix-framework"></i>About
           <% end %>
         </li>
-      </ul>
       <% end %>
+      </ul>
+
+      <div class="search_form my-2">
+        <% if admin_signed_in? %>
+        <%= form_with method: :get, url: admin_search_path do |f| %>
+        <div class="d-flex">
+          <div class="p-1">
+            <%= f.select :search, options_for_select([["完全一致"], ["部分検索"]]) %>
+            <%= f.select :range, options_for_select([["投稿"], ["ジャンル"],["ニックネーム"]]) %>
+          </div>
+          <div class="border p-1">
+            <%= f.text_field :word, placeholder: "キーワード検索", style: "border: 0; outline: 0;" %>
+            <%= f.button :type => "submit", style: "border-style: none; background: none;" do %>
+            <i class="fas fa-search-plus"></i>
+            <% end %>
+          </div>
+        </div>
+        <% end %>
+        <% else %>
+        <%= form_with method: :get, url: search_path do |f| %>
+        <%= f.hidden_field :range, :value => "投稿" %>
+        <%= f.hidden_field :search, :value => "部分検索" %>
+        <div class="border p-1">
+          <%= f.text_field :word, placeholder: "キーワード検索", style: "border: 0; outline: 0;" %>
+          <%= f.button :type => "submit", style: "border-style: none; background: none;" do %>
+           <i class="fas fa-search-plus"></i>
+           <% end %>
+        </div>
+        <% end %>
+        <% end %>
+      </div>
     </div>
   </div>
 </nav>
