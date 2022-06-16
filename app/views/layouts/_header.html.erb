@@ -81,29 +81,20 @@
       <div class="search_form my-2">
         <% if admin_signed_in? %>
         <%= form_with method: :get, url: admin_search_path do |f| %>
-        <div class="d-flex">
-          <div class="p-1">
-            <%= f.select :search, options_for_select([["完全一致"], ["部分検索"]]) %>
-            <%= f.select :range, options_for_select([["投稿"], ["ジャンル"],["ニックネーム"]]) %>
+        <i class="fas fa-search-plus"></i>
+        <%= f.text_field :content, placeholder: "キーワード検索" %>
+        <%= f.select :model, options_for_select({ "User" => "user", "Post" => "post", "Genre" => "genre" }) %>
+        <%= f.select :method, options_for_select({ "完全一致" => "perfect", "前方一致" => "forward", "後方一致" => "backward", "部分一致" => "partial" }) %>
+        <%= f.submit "検索する", class: "btn btn-outline-warning btn-sm" %>
           </div>
-          <div class="border p-1">
-            <%= f.text_field :word, placeholder: "キーワード検索", style: "border: 0; outline: 0;" %>
-            <%= f.button :type => "submit", style: "border-style: none; background: none;" do %>
-            <i class="fas fa-search-plus"></i>
-            <% end %>
-          </div>
-        </div>
         <% end %>
         <% else %>
         <%= form_with method: :get, url: search_path do |f| %>
-        <%= f.hidden_field :range, :value => "投稿" %>
-        <%= f.hidden_field :search, :value => "部分検索" %>
-        <div class="border p-1">
-          <%= f.text_field :word, placeholder: "キーワード検索", style: "border: 0; outline: 0;" %>
-          <%= f.button :type => "submit", style: "border-style: none; background: none;" do %>
-           <i class="fas fa-search-plus"></i>
-           <% end %>
-        </div>
+        <i class="fas fa-search-plus"></i>
+        <%= f.text_field :content, placeholder: "キーワード検索" %>
+        <%= f.select :model, options_for_select({ "User" => "user", "Post" => "post" }) %>
+        <%= f.select :method, options_for_select({ "完全一致" => "perfect", "前方一致" => "forward", "後方一致" => "backward", "部分一致" => "partial" }) %>
+        <%= f.submit "検索する", class: "btn btn-outline-warning btn-sm" %>
         <% end %>
         <% end %>
       </div>
