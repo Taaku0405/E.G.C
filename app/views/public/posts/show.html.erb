@@ -48,19 +48,8 @@
         </tr>
         <tr>
           <th>コメント件数：<%= @post.post_comments.count %></th>
-          <td>
-            <% @post.post_comments.each do |post_comment| %>
-            <p><%= post_comment.user.name %></p>
-            <%= post_comment.created_at.strftime('%Y/%m/%d') %>
-            <%= post_comment.comment %>
-            <% if post_comment.user == current_user %>
-            <%= link_to "コメントを削除", post_post_comment_path(@post, post_comment), method: :delete, class: "btn btn-outline-danger btn-sm", remote: true %>
-            <% end %>
-            <% end %>
-            <%= form_with model: [@post, @post_comment] do |f| %>
-            <br><%= f.text_area :comment, rows: '5', placeholder: "コメントを入力" %>
-            <%= f.submit "送信する" %>
-            <% end %>
+          <td class="post-comments-show">
+            <%= render "public/post_comments/show", posts: @posts %>
           </td>
         </tr>
       </table>

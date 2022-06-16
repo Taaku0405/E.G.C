@@ -53,7 +53,7 @@ class Public::PostsController < ApplicationController
     @posts = Post.where(genre_id: params[:format])
     @genres = Genre.all
     @genre = Genre.find(params[:format])
-     render :index
+    render :index
   end
 
   private
