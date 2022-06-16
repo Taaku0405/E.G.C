@@ -33,7 +33,7 @@ class User < ApplicationRecord
   def active_for_authentication?
    super && (is_deleted == false)
   end
-  
+
   def self.search_for(content, method)
     if method == "perfect"
       User.where(name: content)
@@ -45,5 +45,9 @@ class User < ApplicationRecord
       User.where("name LIKE ?", "%" + content + "%")
     end
   end
-  
+
+  def active_for_authentication?
+    super && (is_deleted == false)
+  end
+
 end

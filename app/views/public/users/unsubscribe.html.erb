@@ -7,8 +7,9 @@
   </h4>
 
   <div class="d-flex justify-content-center mt-5">
-    <%= link_to "退会しない", user_path, class: "btn btn-outline-info btn-block mb-3" %>
-    <%= link_to "退会する", withdraw_path, method: :patch, data: { confilm: "本当に退会しますか？" }, class: "btn btn-outline-danger btn-block mb-3" %>
+    <%= link_to "退会しない", user_path, class: "btn btn-outline-info px-5 mr-5" %>
+
+    <%= link_to "退会する", withdrawal_path, method: :patch, data: { confilm: "本当に退会しますか？" }, class: "btn btn-outline-danger px-5" %>
   </div>
 
 </div>

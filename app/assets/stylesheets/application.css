@@ -13,3 +13,6 @@
  *= require_tree .
  *= require_self
  */
+main {
+   background: linear-gradient(-135deg, #b299ff, #ccffd8);
+}
