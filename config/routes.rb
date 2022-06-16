@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     registrations: "public/registrations",
     sessions: "public/sessions"
   }
-  
+
   devise_scope :user do
     post 'users/guest_sign_in', to: 'users/sessions#guest_sign_in'
   end
@@ -41,7 +41,7 @@ Rails.application.routes.draw do
   end
 
      resources :groups, except: [:destroy] do
-       resource :group_end_users, only: [:create, :destroy]
+       resource :group_users, only: [:create, :destroy]
        resources :event_notices, only: [:new, :create]
        get "event_notices" => "event_notices#sent"
      end

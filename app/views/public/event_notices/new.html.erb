@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-6">
+      <h3 class="d-inline-block px-4 mx-5 mb-3 text-primary"><i class="fas fa-calendar"></i>イベント情報</h1>
+
+      <%= form_with url: group_event_notices_path(@group), method: :post, local:true do |f| %>
+      
+      <div class="form-group mb-5">
+        <strong><%= f.label :"タイトル", class: "col-sm-3 col-form-label" %></strong>
+        <span><%= f.text_field :title, placeholder: "タイトルを入力" %></span>
+      </div>
+      
+      <div class="form-group mb-5">
+        <strong><%= f.label :"詳細", class: "col-sm-3 col-form-label" %></strong>
+        <span><%= f.text_area :body, placeholder: "イベントの詳細を記述" %></span>
+      </div>
+      <div class='form-group d-flex justify-content-end'>
+        <%= f.submit "送信する", class: "btn btn-outline-success px-5" %>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>

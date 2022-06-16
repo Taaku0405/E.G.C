@@ -29,35 +29,33 @@
         </tr>
         <tr>
           <th>いいね</th>
-          <td>
-          <% if @post.favorited_by?(current_user) %>
-          <%= link_to post_favorites_path(@post), method: :delete do %>
-          <i class="fas fa-heart" aria-hidden="true" style="color: red;"></i>
-          <%= @post.favorites.count %>
-          <% end %>
-          </p>
-          <% else %>
-          <p>
-            <%= link_to post_favorites_path(@post), method: :post do %>
-            <i class="fas fa-heart" aria-hidden="true"></i>
-            <%= @post.favorites.count %>
-          <% end %>
-          </p>
-          <% end %>
+          <td id="favorites_btn_<%= @post.id %>">
+          <%= render "public/favorites/btn", posts: @posts %>
           </td>
         </tr>
         <tr>
-          <th>コメント件数：<%= @post.post_comments.count %></th>
-          <td class="post-comments-show">
-            <%= render "public/post_comments/show", posts: @posts %>
+          <th>コメント</th>
+          <td class="book-comments-counter">
+            <%= render "public/post_comments/counter", posts: @posts %>
           </td>
+        </tr>
+        <tr>
+        <% if @post.user == current_user %>
+        <td>
+        <%= link_to "投稿情報を削除する", @post, method: :delete, class: "btn btn-outline-danger px-5" %>
+        </td>
+        <td>
+        <%= link_to "投稿を編集する", edit_post_path(@post), class: "btn btn-outline-success px-5 offset-2" %>
+        </td>
+        <% end %>
         </tr>
       </table>
 
-      <div class="text-center">
-         <%= link_to "投稿情報を削除する", @post, method: :delete, class: "btn btn-outline-danger px-5" %>
-        <%= link_to "投稿を編集する", edit_post_path(@post), class: "btn btn-outline-success px-5 offset-2" %>
+      <div class="book-comments-index m-3">
+        <%= render "public/post_comments/index", posts: @posts %>
       </div>
+
+      <%= render "public/post_comments/form", posts: @posts, post_comment: @post_comment %>
     </div>
   </div>
 </div>
