@@ -7,7 +7,7 @@ class Public::PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.all
+    @posts = Post.page(params[:page]).per(8)
     @genres = Genre.all
   end
 
