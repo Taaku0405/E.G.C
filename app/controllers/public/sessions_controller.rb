@@ -26,17 +26,18 @@ class Public::SessionsController < Devise::SessionsController
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
    protected
-  #会員情報を確認するためのコマンド
-  def end_user_state
-    ## 【処理内容1】入力されたemailからアカウントを1件取得
-     @user = User.find_by(email: params[:user][:email])
-    ## 【アカウントを取得できなかった場合、このメソッドを終了
-    return if !@user
-    ## 【処理内容2】取得したアカウントのパスワードと入力されたパスワードが一致しているかを判別
-    if @user.valid_password?(params[:user][:password]) && (@user.is_deleted == true)
-      flash[:notice] = "退会済みです。お手数ですが、再度ご登録をしてご利用してください。"
-      redirect_to new_user_registration_path
+
+  # 会員の論理削除のための記述。退会後は、同じアカウントでは利用できない。
+   def reject_user
+    @user = User.find_by(name: params[:user][:name])
+    if @user
+      if @user.valid_password?(params[:user][:password]) && (@user.is_deleted == false)
+        flash[:notice] = "退会済みです。再度ご登録をしてご利用ください。"
+        redirect_to new_user_registration
+      else
+        flash[:notice] = "項目を入力してください"
+      end
     end
-  end
+   end
 
 end
