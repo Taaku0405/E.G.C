@@ -6,10 +6,8 @@ class Admin::SearchesController < ApplicationController
 		@method = params[:method]
 		if @model == "user"
 			@records = User.search_for(@content, @method)
-		elsif @model == "Post"
+		else
 			@records = Post.search_for(@content, @method)
-		elsif @model == "Genre"
-		  @records = Genre.search_for(@content, @method)
 		end
 	end
 

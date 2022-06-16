@@ -50,7 +50,7 @@ class Public::PostsController < ApplicationController
 
   def search
     #ジャンル検索アクション
-    @posts = Post.where(genre_id: params[:format])
+    @posts = Post.where(genre_id: params[:format]).page(params[:page]).per(8)
     @genres = Genre.all
     @genre = Genre.find(params[:format])
     render :index

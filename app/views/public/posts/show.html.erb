@@ -3,7 +3,7 @@
 
   <div class="row">
     <div class="col-lg-3">
-     <%= image_tag "E.G.C-logo.png", size:"400x400" %>
+    <%= image_tag @post.user.get_profile_image, size: "400x400" %>
     </div>
     <div class="col-lg-7 offset-lg-2">
       <table class="table table-borderless">
@@ -45,7 +45,7 @@
         <%= link_to "投稿情報を削除する", @post, method: :delete, class: "btn btn-outline-danger px-5" %>
         </td>
         <td>
-        <%= link_to "投稿を編集する", edit_post_path(@post), class: "btn btn-outline-success px-5 offset-2" %>
+        <%= link_to "投稿情報を編集する", edit_post_path(@post), class: "btn btn-outline-success px-5 offset-2" %>
         </td>
         <% end %>
         </tr>

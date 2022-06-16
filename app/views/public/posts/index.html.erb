@@ -12,14 +12,15 @@
     <%= render "sidebar", genres: @genres %>
     </div>
 
-    <div class="col-8">
+    <div class="col-10">
       <h4 class="text-center mb-4"><i class="fas fa-ghost"></i>投稿一覧(全<%= @posts.count %>件)</h4>
-      
+
       <%= render 'index',posts: @posts %>
     </div>
   </div>
+
+<div class="paginate d-flex justify-content-center">
+  <%= paginate @posts %>
 </div>
 
-<div class="d-flex justify-content-center mt-5">
-  <%= paginate @posts %>
 </div>
