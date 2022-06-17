@@ -1,5 +1,6 @@
 class Public::PostsController < ApplicationController
   before_action :authenticate_user!
+  before_action :ensure_correct_user, only: [:edit, :update, :destroy]
 
   def new
     @post = Post.new
@@ -26,7 +27,8 @@ class Public::PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.user_id = current_user.id
     if @post.save
-      redirect_to posts_path, notice: "ゲーム投稿を登録しました"
+      flash[:success] = "ゲーム投稿を登録しました"
+      redirect_to posts_path
     else
       render :new
     end
@@ -36,7 +38,8 @@ class Public::PostsController < ApplicationController
     @genres = Genre.all
     @post = Post.find(params[:id])
     if @post.update(post_params)
-      redirect_to posts_path, notice: "ゲーム投稿を更新しました"
+      flash[:notice] = "ゲーム投稿を更新しました"
+      redirect_to posts_path
     else
       render :edit
     end
@@ -60,6 +63,13 @@ class Public::PostsController < ApplicationController
 
   def post_params
     params.require(:post).permit(:name, :introduction, :genre_id)
+  end
+
+  def ensure_correct_user
+    @post = Post.find(params[:id])
+    unless @post.user == current_user
+      redirect_to posts_path
+    end
   end
 
 end
