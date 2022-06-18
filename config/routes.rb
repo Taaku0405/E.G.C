@@ -32,9 +32,9 @@ Rails.application.routes.draw do
    scope module: :public do
     resources :users, only: [:index, :show, :edit, :update ]
     # 退会確認画面
-    get '/users/:id/unsubscribe' => 'users#unsubscribe', as: 'unsubscribe'
+    get "/users/:id/unsubscribe" => "users#unsubscribe", as: "unsubscribe"
     # 論理削除用のルーティング
-    patch '/users/:id/withdrawal' => 'users#withdrawal', as: 'withdrawal'
+    patch "/users/:id/withdrawal" => "users#withdrawal", as: "withdrawal"
 
    resources :posts do
      resources :post_comments, only: [:create, :destroy]

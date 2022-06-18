@@ -28,8 +28,8 @@
   </table>
 
   <div class="text-center">
-  <%= link_to "投稿情報を削除する", @post, method: :delete,class: "btn btn-outline-danger px-5" %>
-  <%= link_to "投稿情報を編集する", edit_admin_post_path(@post), class: "btn btn-outline-success px-5 offset-2" %>
+  <%= link_to "投稿情報を削除する", admin_post_path(@post.id), method: :delete,class: "btn btn-outline-danger px-5" %>
+  <%= link_to "投稿情報を編集する", edit_admin_post_path(@post.id), class: "btn btn-outline-success px-5 offset-2" %>
   </div>
 
   </div>

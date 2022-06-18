@@ -9,7 +9,7 @@
   <div class="d-flex justify-content-center mt-5">
     <%= link_to "退会しない", user_path, class: "btn btn-outline-info px-5 mr-5" %>
 
-    <%= link_to "退会する", withdrawal_path, method: :patch, data: { confilm: "本当に退会しますか？" }, class: "btn btn-outline-danger px-5" %>
+    <%= link_to "退会する", withdrawal_path, method: :patch, class: "btn btn-outline-danger px-5", data: { confirm: "本当に退会しますか？" } %>
   </div>
 
 </div>

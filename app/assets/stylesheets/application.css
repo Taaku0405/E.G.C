@@ -16,3 +16,15 @@
 main {
    background: linear-gradient(-135deg, #b299ff, #ccffd8, #f9e5d1);
 }
+
+@media screen and (max-width: 768px) {
+    img {
+    width: 100%;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    img {
+    width: 100%;
+   }
+}
