@@ -18,6 +18,7 @@ Rails.application.routes.draw do
 
   root to: "public/homes#top"
    get "public/homes/about"
+   get "public/homes/guide"
 
    namespace :admin do
    resources :users, only: [:index, :show, :edit, :update]
