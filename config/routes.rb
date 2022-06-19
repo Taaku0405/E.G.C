@@ -27,11 +27,16 @@ Rails.application.routes.draw do
   end
 
    scope module: :public do
-    resources :users, only: [:index, :show, :edit, :update ]
+    resources :users, only: [:index, :show, :edit, :update ] do
     # 退会確認画面
     get "/users/:id/unsubscribe" => "users#unsubscribe", as: "unsubscribe"
     # 論理削除用のルーティング
     patch "/users/:id/withdrawal" => "users#withdrawal", as: "withdrawal"
+    # フォロー機能のルーティング
+    resource :relationships, only: [:create, :destroy]
+  	 get 'followings' => 'relationships#followings', as: 'followings'
+  	 get 'followers' => 'relationships#followers', as: 'followers'
+  	end
 
    resources :posts do
      resources :post_comments, only: [:create, :destroy]
