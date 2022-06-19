@@ -32,7 +32,7 @@ Rails.application.routes.draw do
     get "/users/:id/unsubscribe" => "users#unsubscribe", as: "unsubscribe"
     # 論理削除用のルーティング
     patch "/users/:id/withdrawal" => "users#withdrawal", as: "withdrawal"
-    # フォロー機能のルーティング
+
     resource :relationships, only: [:create, :destroy]
   	 get 'followings' => 'relationships#followings', as: 'followings'
   	 get 'followers' => 'relationships#followers', as: 'followers'

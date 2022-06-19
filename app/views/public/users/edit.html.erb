@@ -29,7 +29,7 @@
 
   <div class="row justify-content-center mb-5">
     <%= f.submit "変更を更新する", class: "btn btn-outline-success px-5 mr-5" %>
-    <%= link_to "退会する", unsubscribe_path, class: "btn btn-outline-danger" %>
+    <%= link_to "退会する", user_unsubscribe_path(@user), class: "btn btn-outline-danger" %>
   </div>
   <% end %>
 </div>
