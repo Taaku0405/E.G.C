@@ -15,12 +15,14 @@ class Admin::GenresController < ApplicationController
     @genre.save
     @genres = Genre.all
     redirect_to request.referer
+    flash[:notice] = "ゲームジャンルを追加しました"
   end
 
   def update
     @genre = Genre.find(params[:id])
     @genre.update(genre_params)
     redirect_to admin_genres_path
+    flash[:notice] = "ゲームジャンル情報を更新しました"
   end
 
   private

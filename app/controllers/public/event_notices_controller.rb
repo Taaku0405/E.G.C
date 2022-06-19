@@ -21,6 +21,7 @@ class Public::EventNoticesController < ApplicationController
 
   def sent
     redirect_to group_path(params[:group_id])
+    flash[:notice] = "イベント情報を送信"
   end
 
 end

@@ -8,7 +8,7 @@ class Public::PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.page(params[:page]).per(8)
+    @posts = Post.page(params[:page]).per(8).order('created_at DESC')
     @genres = Genre.all
   end
 
@@ -27,7 +27,7 @@ class Public::PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.user_id = current_user.id
     if @post.save
-      flash[:success] = "ゲーム投稿を登録しました"
+      flash[:notice] = "ゲーム投稿を登録しました"
       redirect_to posts_path
     else
       render :new
@@ -49,6 +49,7 @@ class Public::PostsController < ApplicationController
     @post = Post.find(params[:id])
     @post.destroy
     redirect_to posts_path
+    flash[:notice] = "ゲーム投稿を削除"
   end
 
   def search

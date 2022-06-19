@@ -22,16 +22,20 @@ class Public::GroupsController < ApplicationController
     @group.owner_id = current_user.id
     if @group.save
       redirect_to groups_path
+      flash[:notice] = "グループの作成に成功しました"
     else
       render 'new'
+      flash[:notice] = "グループの作成に失敗しました。再度確認してください"
     end
   end
 
   def update
     if @group.update(group_params)
       redirect_to groups_path
+      flash[:notice] = "グループの情報を更新しました"
     else
       render "edit"
+      flash[:notice] = "グループの情報の更新に失敗しました。再度確認してください"
     end
   end
 
