@@ -11,9 +11,8 @@
   <table class="table table-borderless table-hover">
       <thead class="bg-info">
           <tr>
-              <th></th>
+              <th colspan=""></th>
               <th class="text-nowrap">グループ名</th>
-              <th class="text-nowrap">紹介</th>
               <th class="text-nowrap">参加人数</th>
               <th colspan=""></th>
           </tr>
@@ -21,9 +20,8 @@
       <tbody>
           <% @groups.each do |group| %>
           <tr>
-              <td><%= image_tag group.get_group_image, size:"50x50" %></td>
+              <td><%= image_tag group.get_group_image, size:"150x100" %></td>
               <td><%= link_to group.name, group_path(group) %></td>
-              <td><%= group.introduction %></td>
               <td><%= group.group_users.count %></td>
               <td>
                  <% if group.owner_id == current_user.id %>
