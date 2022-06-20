@@ -27,7 +27,7 @@
               <td><%= group.group_users.count %></td>
               <td>
                  <% if group.owner_id == current_user.id %>
-                 <%= link_to "グループを編集する", edit_group_path(group), class: "btn btn-outline-success px-5" %>
+                 <%= link_to "グループを編集する", edit_group_path(group), class: "btn btn-sm btn-outline-success px-5" %>
                  <% end %>
               </td>
           </tr>
