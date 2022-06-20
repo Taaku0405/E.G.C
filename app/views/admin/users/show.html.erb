@@ -8,19 +8,19 @@
   <div class="row my-4 px-5">
   <table class="table table-bordered col-6 mb-5">
     <tr>
-      <th>会員ID</th>
+      <th class="text-nowrap">会員ID</th>
       <td><%= @user.id %></td>
     </tr>
     <tr>
-      <th>ニックネーム</th>
+      <th class="text-nowrap">ニックネーム</th>
       <td><%= @user.name %></td>
     </tr>
     <tr>
-      <th>メールアドレス</th>
+      <th class="text-nowrap">メールアドレス</th>
       <td><%= @user.email %></td>
     </tr>
     <tr>
-      <th>ステータス</th>
+      <th class="text-nowrap">ステータス</th>
       <% if @user.is_deleted == false %>
       <td class="text-success"><strong>有効</strong></td>
       <% else %>

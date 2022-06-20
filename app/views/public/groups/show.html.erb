@@ -8,17 +8,17 @@
     <div class="col-lg-7 offset-lg-2">
       <table class="table table-borderless">
       <tr>
-        <th>グループ名</th>
+        <th class="text-nowrap">グループ名</th>
         <td><%= @group.name %></td>
       </tr>
 
       <tr>
-        <th>紹介</th>
+        <th class="text-nowrap">紹介</th>
         <td><%= @group.introduction %></td>
       </tr>
 
       <tr>
-        <th>メンバー</th>
+        <th class="text-nowrap">メンバー</th>
         <td>
           <% @group.users.each do |user| %>
           <li style="list-style: none;"><%= user.name %></li>

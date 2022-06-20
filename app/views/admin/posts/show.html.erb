@@ -8,27 +8,27 @@
     <div class="col-lg-7 offset-lg-2">
   <table class="table table-borderless">
       <tr>
-        <th>投稿者</th>
+        <th class="text-nowrap">投稿者</th>
         <td><%= @post.user.name %></td>
       </tr>
       <tr>
-        <th>ゲーム名</th>
+        <th class="text-nowrap">ゲーム名</th>
         <td><%= @post.name %></td>
       </tr>
       <tr>
-        <th>ゲーム詳細</th>
+        <th class="text-nowrap">ゲーム詳細</th>
         <td><%= @post.introduction %></td>
       </tr>
       <tr>
-        <th>ジャンル</th>
+        <th class="text-nowrap">ジャンル</th>
         <td><%= @post.genre.name %></td>
       </tr>
       <tr>
-        <th>投稿日</th>
+        <th class="text-nowrap">投稿日</th>
         <td><%= @post.created_at.strftime('%Y/%m/%d %H:%M:%S') %></td>
       </tr>
       <tr>
-        <th>コメント</th>
+        <th class="text-nowrap">コメント</th>
         <td class="post-comments-counter">
             <%= render "admin/post_comments/counter", post: @post %>
           </td>
