@@ -49,6 +49,7 @@ class Public::GroupsController < ApplicationController
     @group = Group.find(params[:id])
     unless @group.owner_id == current_user.id
       redirect_to groups_path
+      flash[:notice] = "グループオーナー以外は編集できません"
     end
   end
 

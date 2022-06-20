@@ -70,6 +70,7 @@ class Public::PostsController < ApplicationController
     @post = Post.find(params[:id])
     unless @post.user == current_user
       redirect_to posts_path
+      flash[:notice] = "他のユーザーが投稿した内容は編集できません"
     end
   end
 

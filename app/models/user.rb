@@ -19,7 +19,7 @@ class User < ApplicationRecord
   has_one_attached :profile_image
 
   validates :name, length: { minimum: 2, maximum: 20 }, uniqueness: true
-  validates :introduction, length: { maximum: 50 }
+  validates :introduction, length: { maximum: 200 }
 
   def get_profile_image
     if profile_image.attached?
@@ -46,6 +46,14 @@ class User < ApplicationRecord
   def following?(user)
     followings.include?(user)
   end
+
+   #ゲストユーザーのアカウント
+   def self.guest
+    find_or_create_by!(name: 'guestuser' ,email: 'guest@example.com') do |user|
+      user.password = SecureRandom.urlsafe_base64
+      user.name = "guestuser"
+    end
+   end
 
   def self.search_for(content, method)
     if method == "perfect"

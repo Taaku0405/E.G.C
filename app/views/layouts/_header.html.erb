@@ -1,90 +1,75 @@
-<nav class="navbar navbar-expand-lg">
-  <div class="container">
-    <div class="navbar-brand">
-      <div class="py-1">
-        <%= link_to root_path do %>
-        <%= image_tag "E.G.C-logo.png", size: "150x70" %>
+<header style="background-color: #00bfff">
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container">
+      <a class="navbar-brand" href="/"><span><%= image_tag "E.G.C-logo.png", size: "150x70" %></span></a>
+      <div class="row m">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav ml-auto">
+          <% if user_signed_in? %>
+            <li class="nav-item text-nowrap">
+              <%= link_to current_user, class: "nav-link" do %>
+              <i class="fas fa-user-secret"></i>マイページ
+              <% end %>
+            </li>
+            <li class="nav-item text-nowrap">
+              <%= link_to users_path, class: "nav-link" do %>
+              <i class="fas fa-users"></i>会員一覧
+              <% end %>
+            </li>
+            <li class="nav-item text-nowrap">
+              <%= link_to posts_path, class: "nav-link" do %>
+              <i class="fas fa-gamepad"></i>ゲーム投稿一覧
+              <% end %>
+            </li>
+            <li class="nav-item text-nowrap">
+              <%= link_to groups_path, class: "nav-link" do %>
+              <i class="fas fa-biohazard"></i>グループ一覧
+              <% end %>
+            </li>
+            <li class="nav-item text-nowrap">
+              <%= link_to destroy_user_session_path, method: :delete, class: "nav-link" do %>
+              <i class="fas fa-sign-out-alt"></i>ログアウト
+              <% end %>
+            </li>
+          <% elsif admin_signed_in? %>
+           <li class="nav-item text-nowrap">
+             <%= link_to admin_posts_path, class: "nav-link" do %>
+             <i class="fas fa-gamepad"></i>ゲーム投稿一覧
+             <% end %>
+          </li>
+          <li class="nav-item text-nowrap">
+            <%= link_to admin_users_path, class: "nav-link" do %>
+            <i class="fas fa-users"></i>会員一覧
+            <% end %>
+          </li>
+          <li class="nav-item text-nowrap">
+            <%= link_to admin_genres_path, class: "nav-link" do %>
+            <i class="fas fa-dice-d20"></i>ジャンル一覧
+            <% end %>
+          </li>
+          <li class="nav-item text-nowrap">
+            <%= link_to destroy_admin_session_path, method: :delete, class: "nav-link" do %>
+            <i class="fas fa-sign-out-alt"></i>ログアウト
+            <% end %>
+          </li>
+         <% else %>
+          <li class="nav-item text-nowrap">
+            <%= link_to public_homes_guide_path, class: "nav-link" do %>
+            <i class="fas fa-shield-alt"></i>初心者ガイド
+            <% end %>
+          </li>
+          <li class="nav-item text-nowrap">
+            <%= link_to public_homes_about_path, class: "nav-link" do %>
+            <i class="fab fa-phoenix-framework"></i>About
+            <% end %>
+          </li>
         <% end %>
-      </div>
-    </div>
-
-    <div class="d-flex align-items-end justify-content-center flex-column bg-highlight mb-3 mt-2", style="height: 80px;">
-      <ul class="navbar-nav mt-2">
-        <% if user_signed_in? %>
-        <li class="nav-link">
-          <%= link_to current_user, class: "btn" do %>
-          <i class="fas fa-user-secret"></i>マイページ
-          <% end %>
-        </li>
-
-        <li class="nav-link">
-          <%= link_to  users_path, class: "btn" do %>
-          <i class="fas fa-users"></i>会員一覧
-          <% end %>
-        </li>
-
-        <li class="nav-link ml-3">
-          <%= link_to posts_path, class: "btn" do %>
-          <i class="fas fa-gamepad"></i>ゲーム投稿一覧
-          <% end %>
-        </li>
-
-        <li class="nav-link">
-          <%= link_to groups_path, class: "btn" do %>
-          <i class="fas fa-biohazard"></i>グループ一覧
-          <% end %>
-        </li>
-
-        <li class="nav-link">
-          <%= link_to destroy_user_session_path, method: :delete, class: "btn" do %>
-          <i class="fas fa-sign-out-alt"></i>ログアウト
-          <% end %>
-        </li>
-
-        <% elsif admin_signed_in? %>
-
-        <li class="nav-link">
-          <%= link_to admin_posts_path, class: "btn" do %>
-          <i class="fas fa-gamepad"></i>ゲーム投稿一覧
-          <% end %>
-        </li>
-
-        <li class="nav-link">
-          <%= link_to admin_users_path, class: "btn" do %>
-          <i class="fas fa-users"></i>会員一覧
-          <% end %>
-        </li>
-
-        <li class="nav-link">
-          <%= link_to admin_genres_path, class: "btn" do %>
-          <i class="fas fa-dice-d20"></i>ジャンル一覧
-          <% end %>
-        </li>
-
-        <li class="nav-link">
-          <%= link_to destroy_admin_session_path, method: :delete, class: "btn" do %>
-           <i class="fas fa-sign-out-alt"></i>ログアウト
-           <% end %>
-        </li>
-        
-
-        <% else %>
-        
-        <li class="nav-link">
-          <%= link_to public_homes_guide_path, class: "btn" do %>
-          <i class="fas fa-shield-alt"></i>初心者ガイド
-          <% end %>
-        </li>
-        
-        <li class="nav-link">
-          <%= link_to public_homes_about_path, class: "btn" do %>
-          <i class="fab fa-phoenix-framework"></i>About
-          <% end %>
-        </li>
-      <% end %>
       </ul>
 
-      <div class="search_form my-2">
+      <div class="search_form text-nowrap">
         <% if admin_signed_in? %>
         <%= form_with method: :get, url: admin_search_path do |f| %>
         <i class="fas fa-search-plus"></i>
@@ -92,7 +77,7 @@
         <%= f.select :model, options_for_select({ "ユーザー" => "user", "投稿" => "post" }) %>
         <%= f.select :method, options_for_select({ "完全一致" => "perfect", "前方一致" => "forward", "後方一致" => "backward", "部分一致" => "partial" }) %>
         <%= f.submit "検索する", class: "btn btn-outline-warning btn-sm" %>
-          </div>
+        </div>
         <% end %>
         <% else %>
         <%= form_with method: :get, url: search_path do |f| %>
@@ -106,4 +91,5 @@
       </div>
     </div>
   </div>
-</nav>
+ </nav>
+</header>

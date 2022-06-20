@@ -70,6 +70,11 @@
       </div>
 
       <div class="btn-wrapper col-10 mx-auto">
+
+        <div class="row">
+          <%= link_to "ゲストログイン（お試し用）", users_guest_sign_in_path, class: "btn btn-outline-secondary btn-block mb-3 sign_in", method: :post %>
+        </div>
+
         <div class="row">
           <%= link_to "ログイン", new_user_session_path, class: "btn btn-outline-info btn-block mb-3 sign_in" %>
         </div>
