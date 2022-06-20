@@ -2,17 +2,16 @@
       <table class="table table-borderless">
         <thead class="bg-info">
           <tr>
-          <th>投稿ID</th>
           <th>投稿日時</th>
           <th>ゲーム名</th>
           <th>ジャンル</th>
           <th>投稿者</th>
+          <th>コメント数</th>
           </tr>
         </thead>
         <tbody>
           <% posts.each do |post| %>
           <tr>
-            <td><%= post.id %></td>
             <td><%= post.created_at.strftime('%Y/%m/%d %H:%M:%S') %></td>
             <td>
               <%= link_to admin_post_path(post) do %>
@@ -21,6 +20,7 @@
             </td>
             <td><%= post.genre.name %></td>
             <td><%= post.user.name %></td>
+            <td><%= link_to "#{post.post_comments.count} コメント", admin_post_path(post.id) %></td>
           </tr>
           <% end %>
         </tbody>

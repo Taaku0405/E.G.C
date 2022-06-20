@@ -21,7 +21,9 @@ Rails.application.routes.draw do
 
    resources :genres, only: [:index, :create, :edit, :update]
 
-   resources :posts, except: [:create]
+   resources :posts, except: [:create] do
+     resources :post_comments, only: [:destroy]
+   end
 
    get "search" => "searches#search"
   end

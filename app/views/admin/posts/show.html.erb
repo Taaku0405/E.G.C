@@ -7,29 +7,41 @@
     </div>
     <div class="col-lg-7 offset-lg-2">
   <table class="table table-borderless">
-    <tbody>
       <tr>
-        <td>投稿者</td>
+        <th>投稿者</th>
         <td><%= @post.user.name %></td>
       </tr>
       <tr>
-        <td>ゲーム名</td>
+        <th>ゲーム名</th>
         <td><%= @post.name %></td>
       </tr>
       <tr>
-        <td>おすすめポイント</td>
+        <th>ゲーム詳細</th>
         <td><%= @post.introduction %></td>
       </tr>
       <tr>
-        <td>ジャンル</td>
+        <th>ジャンル</th>
         <td><%= @post.genre.name %></td>
       </tr>
-    </tbody>
+      <tr>
+        <th>投稿日</th>
+        <td><%= @post.created_at.strftime('%Y/%m/%d %H:%M:%S') %></td>
+      </tr>
+      <tr>
+        <th>コメント</th>
+        <td class="post-comments-counter">
+            <%= render "admin/post_comments/counter", post: @post %>
+          </td>
+      </tr>
   </table>
 
   <div class="text-center">
   <%= link_to "投稿情報を削除する", admin_post_path(@post.id), method: :delete,class: "btn btn-outline-danger px-5", data: { confirm: "投稿を削除してもよろしいですか？" } %>
   <%= link_to "投稿情報を編集する", edit_admin_post_path(@post.id), class: "btn btn-outline-success px-5 offset-2" %>
+  </div>
+
+   <div class="post-comments-index m-3">
+     <%= render "admin/post_comments/index", post: @post %>
   </div>
 
   </div>
