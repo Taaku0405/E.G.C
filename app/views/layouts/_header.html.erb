@@ -8,11 +8,11 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
           <ul class="navbar-nav ml-auto">
-          <% if user_signed_in? %>
+            <% if user_signed_in? %>
             <li class="nav-item text-nowrap">
               <%= link_to current_user, class: "nav-link" do %>
               <i class="fas fa-user-secret"></i>マイページ
-              <% end %>
+            <% end %>
             </li>
             <li class="nav-item text-nowrap">
               <%= link_to users_path, class: "nav-link" do %>
@@ -34,62 +34,61 @@
               <i class="fas fa-sign-out-alt"></i>ログアウト
               <% end %>
             </li>
-          <% elsif admin_signed_in? %>
-           <li class="nav-item text-nowrap">
-             <%= link_to admin_posts_path, class: "nav-link" do %>
-             <i class="fas fa-gamepad"></i>ゲーム投稿一覧
-             <% end %>
-          </li>
-          <li class="nav-item text-nowrap">
-            <%= link_to admin_users_path, class: "nav-link" do %>
-            <i class="fas fa-users"></i>会員一覧
+            <% elsif admin_signed_in? %>
+            <li class="nav-item text-nowrap">
+              <%= link_to admin_posts_path, class: "nav-link" do %>
+              <i class="fas fa-gamepad"></i>ゲーム投稿一覧
+              <% end %>
+            </li>
+            <li class="nav-item text-nowrap">
+              <%= link_to admin_users_path, class: "nav-link" do %>
+              <i class="fas fa-users"></i>会員一覧
+              <% end %>
+            </li>
+            <li class="nav-item text-nowrap">
+              <%= link_to admin_genres_path, class: "nav-link" do %>
+              <i class="fas fa-dice-d20"></i>ジャンル一覧
+              <% end %>
+            </li>
+            <li class="nav-item text-nowrap">
+              <%= link_to destroy_admin_session_path, method: :delete, class: "nav-link" do %>
+              <i class="fas fa-sign-out-alt"></i>ログアウト
+              <% end %>
+            </li>
+            <% else %>
+            <li class="nav-item text-nowrap">
+              <%= link_to public_homes_guide_path, class: "nav-link" do %>
+              <i class="fas fa-shield-alt"></i>初心者ガイド
+              <% end %>
+            </li>
+            <li class="nav-item text-nowrap">
+              <%= link_to public_homes_about_path, class: "nav-link" do %>
+              <i class="fab fa-phoenix-framework"></i>About
+              <% end %>
+            </li>
             <% end %>
-          </li>
-          <li class="nav-item text-nowrap">
-            <%= link_to admin_genres_path, class: "nav-link" do %>
-            <i class="fas fa-dice-d20"></i>ジャンル一覧
+          </ul>
+          <div class="search_form text-nowrap">
+            <% if admin_signed_in? %>
+            <%= form_with method: :get, url: admin_search_path do |f| %>
+            <i class="fas fa-search-plus"></i>
+            <%= f.text_field :content, placeholder: "キーワード検索" %>
+            <%= f.select :model, options_for_select({ "ユーザー" => "user", "投稿" => "post" }) %>
+            <%= f.select :method, options_for_select({ "完全一致" => "perfect", "前方一致" => "forward", "後方一致" => "backward", "部分一致" => "partial" }) %>
+            <%= f.submit "検索する", class: "btn btn-outline-warning btn-sm" %>
+          </div>
             <% end %>
-          </li>
-          <li class="nav-item text-nowrap">
-            <%= link_to destroy_admin_session_path, method: :delete, class: "nav-link" do %>
-            <i class="fas fa-sign-out-alt"></i>ログアウト
+            <% else %>
+            <%= form_with method: :get, url: search_path do |f| %>
+            <i class="fas fa-search-plus"></i>
+            <%= f.text_field :content, placeholder: "キーワード検索" %>
+            <%= f.select :model, options_for_select({ "ユーザー" => "user", "投稿" => "post" }) %>
+            <%= f.select :method, options_for_select({ "完全一致" => "perfect", "前方一致" => "forward", "後方一致" => "backward", "部分一致" => "partial" }) %>
+            <%= f.submit "検索する", class: "btn btn-outline-warning btn-sm" %>
             <% end %>
-          </li>
-         <% else %>
-          <li class="nav-item text-nowrap">
-            <%= link_to public_homes_guide_path, class: "nav-link" do %>
-            <i class="fas fa-shield-alt"></i>初心者ガイド
             <% end %>
-          </li>
-          <li class="nav-item text-nowrap">
-            <%= link_to public_homes_about_path, class: "nav-link" do %>
-            <i class="fab fa-phoenix-framework"></i>About
-            <% end %>
-          </li>
-        <% end %>
-      </ul>
-
-      <div class="search_form text-nowrap">
-        <% if admin_signed_in? %>
-        <%= form_with method: :get, url: admin_search_path do |f| %>
-        <i class="fas fa-search-plus"></i>
-        <%= f.text_field :content, placeholder: "キーワード検索" %>
-        <%= f.select :model, options_for_select({ "ユーザー" => "user", "投稿" => "post" }) %>
-        <%= f.select :method, options_for_select({ "完全一致" => "perfect", "前方一致" => "forward", "後方一致" => "backward", "部分一致" => "partial" }) %>
-        <%= f.submit "検索する", class: "btn btn-outline-warning btn-sm" %>
         </div>
-        <% end %>
-        <% else %>
-        <%= form_with method: :get, url: search_path do |f| %>
-        <i class="fas fa-search-plus"></i>
-        <%= f.text_field :content, placeholder: "キーワード検索" %>
-        <%= f.select :model, options_for_select({ "ユーザー" => "user", "投稿" => "post" }) %>
-        <%= f.select :method, options_for_select({ "完全一致" => "perfect", "前方一致" => "forward", "後方一致" => "backward", "部分一致" => "partial" }) %>
-        <%= f.submit "検索する", class: "btn btn-outline-warning btn-sm" %>
-        <% end %>
-        <% end %>
       </div>
     </div>
-  </div>
- </nav>
+  </nav>
 </header>

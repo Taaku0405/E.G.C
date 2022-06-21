@@ -11,6 +11,7 @@ class Post < ApplicationRecord
     favorites.where(user_id: user.id).exists?
   end
 
+  #検索機能の定義
   def self.search_for(content, method)
     if method == "perfect"
       Post.where(name: content)

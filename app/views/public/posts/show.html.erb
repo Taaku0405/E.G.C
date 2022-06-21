@@ -1,61 +1,56 @@
 <div class="container">
-  <h3 class="d-inline-block px-4 mx-5 mb-3 text-primary"><i class="fas fa-biohazard"></i>ゲーム詳細</h3>
-
-  <div class="row">
-    <div class="col-lg-3">
-    <%= image_tag @post.user.get_profile_image, size: "400x400" %>
-    </div>
-    <div class="col-lg-7 offset-lg-2">
-      <table class="table table-borderless">
-        <tr>
-          <th class="text-nowrap">投稿者</th>
-          <td><%= @post.user.name %></td>
-        </tr>
-        <tr>
-          <th class="text-nowrap">ゲーム名</th>
-          <td><%= @post.name %></td>
-        </tr>
-        <tr>
-          <th class="text-nowrap">ゲーム詳細</th>
-          <td><%= @post.introduction %></td>
-        </tr>
-        <tr>
-          <th class="text-nowrap">ゲームジャンル</th>
-          <td><%= @post.genre.name %></td>
-        </tr>
-        <tr>
-          <th class="text-nowrap">投稿日</th>
-          <td><%= @post.created_at.strftime('%Y/%m/%d %H:%M:%S') %></td>
-        </tr>
-        <tr>
-          <th class="text-nowrap">いいね</th>
-          <td class="favorites_buttons_<%= @post.id %>">
-          <%= render "public/favorites/favorite", post: @post %>
-          </td>
-        </tr>
-        <tr>
-          <th class="text-nowrap">コメント</th>
-          <td class="post-comments-counter">
-            <%= render "public/post_comments/counter", post: @post %>
-          </td>
-        </tr>
-        <tr>
-        </table>
-
-        <div class="m-3">
-        <% if @post.user == current_user %>
-        <%= link_to "投稿情報を削除する", @post, method: :delete, class: "btn btn-outline-danger px-5", data: { confirm: "投稿を削除してもよろしいですか？" } %>
-        <%= link_to "投稿情報を編集する", edit_post_path(@post), class: "btn btn-outline-success px-5 offset-2" %>
-        <% end %>
-        </div>
-
-
-
-      <div class="post-comments-index m-3">
-        <%= render "public/post_comments/index", post: @post %>
-      </div>
-
-      <%= render "public/post_comments/form", post: @post, post_comment: @post_comment %>
-    </div>
+ <h3 class="d-inline-block px-4 mx-5 mb-3 text-primary"><i class="fas fa-biohazard"></i>ゲーム詳細</h3>
+ <div class="row">
+  <div class="col-lg-3">
+   <%= image_tag @post.user.get_profile_image, size: "400x400" %>
   </div>
+  
+  <div class="col-lg-7 offset-lg-2">
+   <table class="table table-borderless">
+    <tr>
+     <th class="text-nowrap">投稿者</th>
+     <td><%= @post.user.name %></td>
+    </tr>
+    <tr>
+     <th class="text-nowrap">ゲーム名</th>
+     <td><%= @post.name %></td>
+     </tr>
+    <tr>
+     <th class="text-nowrap">ゲーム詳細</th>
+     <td><%= @post.introduction %></td>
+    </tr>
+    <tr>
+     <th class="text-nowrap">ゲームジャンル</th>
+     <td><%= @post.genre.name %></td>
+    </tr>
+    <tr>
+     <th class="text-nowrap">投稿日</th>
+     <td><%= @post.created_at.strftime('%Y/%m/%d %H:%M:%S') %></td>
+    </tr>
+    <tr>
+     <th class="text-nowrap">いいね</th>
+     <td class="favorites_buttons_<%= @post.id %>">
+      <%= render "public/favorites/favorite", post: @post %>
+     </td>
+    </tr>
+    <tr>
+     <th class="text-nowrap">コメント</th>
+     <td class="post-comments-counter">
+      <%= render "public/post_comments/counter", post: @post %>
+      </td>
+    </tr>
+   </table>
+   
+   <div class="m-3">
+    <% if @post.user == current_user %>
+    <%= link_to "投稿情報を削除する", @post, method: :delete, class: "btn btn-outline-danger px-5", data: { confirm: "投稿を削除してもよろしいですか？" } %>
+    <%= link_to "投稿情報を編集する", edit_post_path(@post), class: "btn btn-outline-success px-5 offset-2" %>
+    <% end %>
+   </div>
+   <div class="post-comments-index m-3">
+    <%= render "public/post_comments/index", post: @post %>
+   </div>
+    <%= render "public/post_comments/form", post: @post, post_comment: @post_comment %>
+  </div>
+ </div>
 </div>

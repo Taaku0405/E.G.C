@@ -1,16 +1,16 @@
 <table class="table table-bordered table-hover">
-  <thead class="bg-info">
-    <tr>
-      <th>ジャンル検索</th>
-    </tr>
-    </thead>
-    <tbody>
-      <% genres.each do |genre| %>
-      <tr>
-        <td>
-          <%= link_to genre.name, search_posts_path(genre.id), method: :get %>
-        </td>
-      </tr>
-      <% end %>
-    </tbody>
-  </table>
+ <thead class="bg-info">
+  <tr>
+   <th>ジャンル検索</th>
+  </tr>
+ </thead>
+ <tbody>
+  <% genres.each do |genre| %>
+  <tr>
+   <td>
+    <%= link_to genre.name, search_posts_path(genre.id), method: :get %>
+   </td>
+  </tr>
+  <% end %>
+ </tbody>
+</table>

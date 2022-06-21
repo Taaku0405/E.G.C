@@ -9,6 +9,7 @@ class Group < ApplicationRecord
   validates :name, presence: true
   validates :introduction, presence: true
 
+  #プロフィール写真を設定しなかった場合
   def get_group_image
     if group_image.attached?
       group_image
@@ -17,6 +18,7 @@ class Group < ApplicationRecord
     end
   end
 
+  #グループオーナーの定義
   def is_owned_by?(user)
     owner.id == user.id
   end

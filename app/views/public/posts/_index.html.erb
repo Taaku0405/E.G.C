@@ -1,14 +1,14 @@
-      <div class="post_index d-flex flex-wrap">
-        <% posts.each do |post| %>
-        <div class="post_box mr-3">
-          <%= link_to post_path(post) do %>
-          <%= image_tag post.user.get_profile_image, size: "150x150" %>
-          <% end %>
-          <br><div class="badge"><%= post.name %></div>
-          <br><div class="badge">ジャンル:<%= post.genre.name %></div>
-          <br><div class="badge">投稿者:<%= post.user.name %></div>
-          <br><div class="badge">投稿日:<%= post.created_at.strftime('%Y/%m/%d %H:%M:%S') %></div>
-          <br><div class="badge"><%= link_to "#{post.post_comments.count} コメント", post_path(post.id) %></div>
-        </div>
-        <% end %>
-      </div>
+<div class="post_index d-flex flex-wrap">
+ <% posts.each do |post| %>
+ <div class="post_box mr-3">
+  <%= link_to post_path(post) do %>
+  <%= image_tag post.user.get_profile_image, size: "150x150" %>
+  <% end %>
+ <br><div class="badge"><%= post.name %></div>
+ <br><div class="badge">ジャンル:<%= post.genre.name %></div>
+ <br><div class="badge">投稿者:<%= post.user.name %></div>
+ <br><div class="badge">投稿日:<%= post.created_at.strftime('%Y/%m/%d %H:%M:%S') %></div>
+ <br><div class="badge"><%= link_to "#{post.post_comments.count} コメント", post_path(post.id) %></div>
+ </div>
+ <% end %>
+</div>

@@ -1,49 +1,47 @@
 <div class="container">
   <h3 class="d-inline-block px-4 mx-5 mb-3 text-primary"><i class="fas fa-gavel"></i>ゲーム投稿詳細</h3>
-
   <div class="row">
     <div class="col-lg-3">
-     <%= image_tag @post.user.get_profile_image, size: "450x430" %>
+      <%= image_tag @post.user.get_profile_image, size: "450x430" %>
     </div>
     <div class="col-lg-7 offset-lg-2">
-  <table class="table table-borderless">
-      <tr>
-        <th class="text-nowrap">投稿者</th>
-        <td><%= @post.user.name %></td>
-      </tr>
-      <tr>
-        <th class="text-nowrap">ゲーム名</th>
-        <td><%= @post.name %></td>
-      </tr>
-      <tr>
-        <th class="text-nowrap">ゲーム詳細</th>
-        <td><%= @post.introduction %></td>
-      </tr>
-      <tr>
-        <th class="text-nowrap">ジャンル</th>
-        <td><%= @post.genre.name %></td>
-      </tr>
-      <tr>
-        <th class="text-nowrap">投稿日</th>
-        <td><%= @post.created_at.strftime('%Y/%m/%d %H:%M:%S') %></td>
-      </tr>
-      <tr>
-        <th class="text-nowrap">コメント</th>
-        <td class="post-comments-counter">
+      <table class="table table-borderless">
+        <tr>
+          <th class="text-nowrap">投稿者</th>
+          <td><%= @post.user.name %></td>
+        </tr>
+        <tr>
+          <th class="text-nowrap">ゲーム名</th>
+          <td><%= @post.name %></td>
+        </tr>
+        <tr>
+          <th class="text-nowrap">ゲーム詳細</th>
+          <td><%= @post.introduction %></td>
+        </tr>
+        <tr>
+          <th class="text-nowrap">ジャンル</th>
+          <td><%= @post.genre.name %></td>
+        </tr>
+        <tr>
+          <th class="text-nowrap">投稿日</th>
+          <td><%= @post.created_at.strftime('%Y/%m/%d %H:%M:%S') %></td>
+        </tr>
+        <tr>
+          <th class="text-nowrap">コメント</th>
+          <td class="post-comments-counter">
             <%= render "admin/post_comments/counter", post: @post %>
           </td>
-      </tr>
-  </table>
-
-  <div class="text-center">
-  <%= link_to "投稿情報を削除する", admin_post_path(@post.id), method: :delete,class: "btn btn-outline-danger px-5", data: { confirm: "投稿を削除してもよろしいですか？" } %>
-  <%= link_to "投稿情報を編集する", edit_admin_post_path(@post.id), class: "btn btn-outline-success px-5 offset-2" %>
+        </tr>
+      </table>
+      
+      <div class="text-center">
+        <%= link_to "投稿情報を削除する", admin_post_path(@post.id), method: :delete,class: "btn btn-outline-danger px-5", data: { confirm: "投稿を削除してもよろしいですか？" } %>
+        <%= link_to "投稿情報を編集する", edit_admin_post_path(@post.id), class: "btn btn-outline-success px-5 offset-2" %>
+      </div>
+      
+      <div class="post-comments-index m-3">
+        <%= render "admin/post_comments/index", post: @post %>
+      </div>
+    </div>
   </div>
-
-   <div class="post-comments-index m-3">
-     <%= render "admin/post_comments/index", post: @post %>
-  </div>
-
-  </div>
- </div>
 </div>

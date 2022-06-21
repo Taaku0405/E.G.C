@@ -1,41 +1,38 @@
 <div class="container">
   <h3 class="d-inline-block px-4 mx-5 mb-3 text-primary"><i class="fas fa-dungeon"></i>グループ詳細</h3>
-
   <div class="row">
     <div class="col-lg-3">
       <%= image_tag @group.get_group_image, size: "450x450" %>
     </div>
     <div class="col-lg-7 offset-lg-2">
       <table class="table table-borderless">
-      <tr>
-        <th class="text-nowrap">グループ名</th>
-        <td><%= @group.name %></td>
-      </tr>
+        <tr>
+          <th class="text-nowrap">グループ名</th>
+          <td><%= @group.name %></td>
+        </tr>
+        <tr>
+          <th class="text-nowrap">紹介</th>
+          <td><%= @group.introduction %></td>
+        </tr>
+        <tr>
+          <th class="text-nowrap">メンバー</th>
+          <td>
+            <% @group.users.each do |user| %>
+            <li style="list-style: none;"><%= user.name %></li>
+            <% end %>
+          </td>
+        </tr>
+      </table>
 
-      <tr>
-        <th class="text-nowrap">紹介</th>
-        <td><%= @group.introduction %></td>
-      </tr>
-
-      <tr>
-        <th class="text-nowrap">メンバー</th>
-        <td>
-          <% @group.users.each do |user| %>
-          <li style="list-style: none;"><%= user.name %></li>
-          <% end %>
-        </td>
-      </tr>
-     </table>
-
-     <div class="m-5">
-       <% if @group.is_owned_by?(current_user) %>
+      <div class="m-5">
+        <% if @group.is_owned_by?(current_user) %>
         <%= link_to "グループを編集する", edit_group_path(@group), class: "btn btn-outline-success px-5" %>
         <%= link_to "イベント登録", new_group_event_notice_path(@group), class: "btn btn-outline-info px-5" %>
         <% else %>
         <% if @group.includesUser?(current_user) %>
-          <%= link_to "グループから脱退する", group_group_users_path(@group), method: :delete, class: "btn btn-outline-danger px-5" %>
+        <%= link_to "グループから脱退する", group_group_users_path(@group), method: :delete, class: "btn btn-outline-danger px-5" %>
         <% else %>
-          <%= link_to "グループに参加する", group_group_users_path(@group), method: :post, class: "btn btn-outline-warning px-5" %>
+        <%= link_to "グループに参加する", group_group_users_path(@group), method: :post, class: "btn btn-outline-warning px-5" %>
         <% end %>
         <% end %>
       </div>

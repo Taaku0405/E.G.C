@@ -2,11 +2,8 @@
   <div id="error">
     <%= render 'layouts/error_messages', model: @user %>
   </div>
-
   <h3 class="d-inline-block px-4 mx-5 mb-3 text-primary"><i class="fas fa-user-edit"></i><%= @user.name %>さんの会員情報編集</h3>
-
   <%= form_with model: @user, url: admin_user_path(@user.id), method: :patch do |f| %>
-
   <div class="form-group">
     <strong><%= f.label :id, "会員ID", class: "col-sm-3 col-form-label" %></strong>
     <span><%= f.label @user.id, class: "col-sm-3 col-form-label" %></span>

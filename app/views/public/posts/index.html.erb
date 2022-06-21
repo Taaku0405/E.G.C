@@ -1,26 +1,21 @@
 <div class="container">
-  <h3 class="d-inline-block px-4 mx-5 mb-3 text-primary"><i class="fas fa-gamepad"></i>ゲーム投稿一覧</h3>
-  <div class="text-center mb-4">
-    <%= link_to new_post_path do %>
-    <i class="fas fa-plus-square"></i>
-    <i class="text-primary">ゲームを新規投稿する</i>
-    <% end %>
+ <h3 class="d-inline-block px-4 mx-5 mb-3 text-primary"><i class="fas fa-gamepad"></i>ゲーム投稿一覧</h3>
+ <div class="text-center mb-4">
+  <%= link_to new_post_path do %>
+  <i class="fas fa-plus-square"></i>
+  <i class="text-primary">ゲームを新規投稿する</i>
+  <% end %>
+ </div>
+ <div class="row">
+  <div class="col-2">
+   <%= render "sidebar", genres: @genres %>
   </div>
-
-  <div class="row">
-    <div class="col-2">
-    <%= render "sidebar", genres: @genres %>
-    </div>
-
-    <div class="col-10">
-      <h4 class="text-center mb-4"><i class="fas fa-ghost"></i>投稿一覧(全<%= @posts.count %>件)</h4>
-
-      <%= render 'index',posts: @posts %>
-    </div>
+  <div class="col-10">
+   <h4 class="text-center mb-4"><i class="fas fa-ghost"></i>投稿一覧(全<%= @posts.count %>件)</h4>
+   <%= render 'index',posts: @posts %>
   </div>
-
-<div class="paginate d-flex justify-content-center">
+ </div>
+ <div class="paginate d-flex justify-content-center">
   <%= paginate @posts %>
-</div>
-
+ </div>
 </div>

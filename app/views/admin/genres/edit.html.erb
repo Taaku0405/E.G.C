@@ -1,12 +1,10 @@
 <div class="container">
   <div id="error">
-  <%= render "layouts/error_messages", model: @genre%>
+    <%= render "layouts/error_messages", model: @genre%>
   </div>
-
   <div class="row">
     <h3 class="d-inline-block px-4 mx-5 mb-3 text-primary"><i class="fas fa-dungeon"></i>ゲームジャンルの編集</h3>
   </div>
-
   <div class="col-lg-8">
     <%= form_with model: @genre, url: admin_genre_path(@genre), method: :patch do |f| %>
     <strong><%= f.label :"ジャンル名", class: "col-sm-9 col-form-label" %></strong>

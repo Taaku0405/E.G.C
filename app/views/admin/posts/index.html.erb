@@ -1,10 +1,7 @@
 <div class="container">
-  <h3 class="d-inline-block px-4 mx-5 mb-3 text-primary"><i class="fas fa-gamepad"></i>ゲーム投稿一覧</h3>
-
-  <%= render 'index', posts: @posts %>
-
-   <div class="paginate d-flex justify-content-center">
-    <%= paginate @posts %>
-  </div>
-
+ <h3 class="d-inline-block px-4 mx-5 mb-3 text-primary"><i class="fas fa-gamepad"></i>ゲーム投稿一覧</h3>
+ <%= render 'index', posts: @posts %>
+ <div class="paginate d-flex justify-content-center">
+  <%= paginate @posts %>
+ </div>
 </div>
