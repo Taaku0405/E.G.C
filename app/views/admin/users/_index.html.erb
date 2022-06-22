@@ -2,6 +2,7 @@
 <table class="table table-borderless table-hover">
   <thead class="bg-info">
     <tr>
+      <th colspan=""></th>
       <th class="text-nowrap">ユーザーID</th>
       <th class="text-nowrap">ニックネーム</th>
       <th class="text-nowrap">メールアドレス</th>
@@ -11,6 +12,7 @@
   <tbody>
     <% users.each do |user| %>
     <tr>
+      <td><%= image_tag user.get_profile_image, size:"50x50" %></td>
       <td><%= user.id %></td>
       <td>
         <%= link_to  admin_user_path(user.id) do %>
