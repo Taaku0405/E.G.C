@@ -18,7 +18,7 @@
    <td class="text-center"><%= link_to user.followings.count, user_followings_path(user) %></td>
    <td ><%= link_to user.followers.count, user_followers_path(user) %></td>
    <td><%= render "public/relationships/btn", user: user %></td>
-   <td><%= link_to "詳細を見る", user_path(user.id), class: "btn btn-outline-info px-5" %></td>
+   <td><%= link_to "詳細を見る", user_path(user.id), class: "btn btn-sm btn-outline-info px-5" %></td>
   </tr>
   <% end %>
  </tbody>
