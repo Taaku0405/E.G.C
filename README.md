@@ -27,14 +27,14 @@
 - テーブル提議書 => https://docs.google.com/spreadsheets/d/1Va4w7Rtxun5FZTdcbjTxaDgfQjuE6Sy5OgswmPo6Pgs/edit#gid=330628383
 - アプリケーション詳細設計 => https://docs.google.com/spreadsheets/d/1dYELTMZjlhUO8mWb7pRrmKfxazEmSJZTTpaRNXK_uV4/edit#gid=2133469642
 
-##開発環境
+## 開発環境
 - OS：Linux(CentOS)
 - 言語：HTML,CSS,JavaScript,Ruby,SQL
 - フレームワーク：Ruby on Rails
 - JSライブラリ：jQuery
 - IDE：Cloud9
 
-##機能一覧
+## 機能一覧
 -  ★ユーザー側
 - 　・ユーザー認証（新規登録/ログイン/ログアウト)
 - 　・ゲストログイン
@@ -55,10 +55,15 @@
 - 　・ジャンル機能(新規作成/一覧画面/編集)
 - 　・検索機能(ユーザと投稿の２つを条件分岐で絞り込み検索可能)
 
-##テスト確認
+## テスト確認
 - テスト仕様書=> https://docs.google.com/spreadsheets/d/1G1oqZfGwHUZ3DVD2Ape3Dqc2KXHQJVEh/edit#gid=345879295
 
 ## 使用素材
 - O-DAN様から画像を使用させてもらっています
 - 下記のURLより
 - https://o-dan.net/ja/
+
+## 管理者側説明
+### 管理者側のログインページは/admin/sign_in <=をURL直打ちで遷移
+- Eメール => sample@admin.com
+- パスワード => 123456
