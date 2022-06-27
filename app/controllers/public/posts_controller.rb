@@ -31,6 +31,7 @@ class Public::PostsController < ApplicationController
       redirect_to posts_path
     else
       render :new
+      flash[:notice] = "ゲーム投稿に失敗しました。再度確認してください"
     end
   end
 
@@ -42,6 +43,7 @@ class Public::PostsController < ApplicationController
       redirect_to posts_path
     else
       render :edit
+      flash[:notice] = "ゲーム投稿情報の更新に失敗しました。再度確認してください"
     end
   end
 

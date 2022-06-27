@@ -1,8 +1,8 @@
 <div class="container">
+  <h3 class="d-inline-block px-4 mx-5 mb-3 text-primary"><i class="fas fa-edit"></i>ゲーム投稿編集</h3>
   <div id="error">
     <%= render 'layouts/error_messages', model: @post %>
   </div>
-  <h3 class="d-inline-block px-4 mx-5 mb-3 text-primary"><i class="fas fa-edit"></i>ゲーム投稿編集</h3>
   <%= form_with model: @post, url: admin_post_path(@post), local: :true do |f| %>
   <div class="form-group">
     <strong><%= f.label :"ゲーム名", class: "col-sm-3 col-form-label" %></strong>
@@ -16,7 +16,7 @@
 
   <div class="form-group">
     <strong><%= f.label :"ジャンル", class: "col-sm-3 col-form-label" %></strong>
-    <span><%= f.collection_select :genre_id, @genres, :id, :name, {prompt: "選択してください", class: "form-control"} %></span>
+    <span> <%= f.collection_select(:genre_id, @genres, :id, :name, {prompt: "選択してください", class: 'form-control'}) %></span>
   </div>
 
   <div class="form-group row d-flex">

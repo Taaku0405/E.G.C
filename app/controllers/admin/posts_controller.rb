@@ -16,6 +16,7 @@ class Admin::PostsController < ApplicationController
   end
 
   def update
+    @genres = Genre.all
     @post = Post.find(params[:id])
     if @post.update(post_params)
       redirect_to admin_post_path(@post)

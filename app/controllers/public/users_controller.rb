@@ -22,6 +22,7 @@ class Public::UsersController < ApplicationController
       flash[:notice] = "会員情報を更新しました"
     else
       render :edit
+      flash[:notice] = "会員情報の更新に失敗しました。再度確認してください"
     end
   end
 
@@ -34,8 +35,8 @@ class Public::UsersController < ApplicationController
     # is_deletedカラムをtrueに変更することにより削除フラグを立てる
     @user.update(is_deleted: true)
     reset_session
-    flash[:notice] = "退会処理を実行いたしました"
     redirect_to root_path
+    flash[:notice] = "退会処理を実行いたしました"
   end
 
   private
