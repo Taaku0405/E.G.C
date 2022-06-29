@@ -9,7 +9,7 @@ class Group < ApplicationRecord
   validates :name, presence: true
   validates :introduction, presence: true
 
-  #プロフィール写真を設定しなかった場合
+  #グループ写真を設定しなかった場合
   def get_group_image
     if group_image.attached?
       group_image

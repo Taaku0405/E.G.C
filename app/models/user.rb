@@ -21,7 +21,8 @@ class User < ApplicationRecord
 
   validates :name, length: { minimum: 2, maximum: 20 }, uniqueness: true
   validates :introduction, length: { maximum: 200 }
-
+  
+  #プロフィール写真を設定しなかった場合のデフォルト写真
   def get_profile_image
     if profile_image.attached?
       profile_image
@@ -58,7 +59,7 @@ class User < ApplicationRecord
     end
    end
   
-  #検索機能の
+  #検索機能の定義
   def self.search_for(content, method)
     if method == "perfect"
       User.where(name: content)
@@ -70,7 +71,8 @@ class User < ApplicationRecord
       User.where("name LIKE ?", "%" + content + "%")
     end
   end
-
+  
+  #会員ステータスの定義
   def active_for_authentication?
     super && (is_deleted == false)
   end
