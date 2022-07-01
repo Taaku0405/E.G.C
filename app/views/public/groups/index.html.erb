@@ -7,32 +7,34 @@
     <% end %>
   </div>
   <div class="card-header"><i class="fab fa-fantasy-flight-games"></i>グループ</div>
-  <table class="table table-borderless table-hover">
-    <thead class="bg-info">
-      <tr>
-        <th colspan=""></th>
-        <th class="text-nowrap">オーナー名</th>
-        <th class="text-nowrap">グループ名</th>
-        <th class="text-nowrap">参加人数</th>
-        <th colspan=""></th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @groups.each do |group| %>
-      <tr>
-        <td><%= image_tag group.get_group_image, size:"150x100" %></td>
-        <td><%= group.owner.name %></td>
-        <td><%= link_to group.name, group_path(group) %></td>
-        <td><%= group.group_users.count %></td>
-        <td>
-          <% if group.owner_id == current_user.id %>
-          <%= link_to "グループを編集する", edit_group_path(group), class: "btn btn-sm btn-outline-success px-5" %>
-          <% end %>
-        </td>
-      </tr>
-      <% end %>
-    </tbody>
-  </table>
+  <div class="table-responsive">
+    <table class="table table-borderless table-hover">
+      <thead class="bg-info">
+        <tr>
+          <th colspan=""></th>
+          <th class="text-nowrap">オーナー名</th>
+          <th class="text-nowrap">グループ名</th>
+          <th class="text-nowrap">参加人数</th>
+          <th colspan=""></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @groups.each do |group| %>
+        <tr>
+          <td><%= image_tag group.get_group_image, size:"150x100" %></td>
+          <td><%= group.owner.name %></td>
+          <td><%= link_to group.name, group_path(group) %></td>
+          <td><%= group.group_users.count %></td>
+          <td>
+            <% if group.owner_id == current_user.id %>
+            <%= link_to "グループを編集する", edit_group_path(group), class: "btn btn-sm btn-outline-success px-5" %>
+            <% end %>
+          </td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
 
   <div class="paginate d-flex justify-content-center">
     <%= paginate @groups %>

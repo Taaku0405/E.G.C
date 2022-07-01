@@ -1,31 +1,33 @@
 <div class="card-header"><i class="fas fa-user-secret"></i>エンドユーザー</div>
-<table class="table table-borderless table-hover">
-  <thead class="bg-info">
-    <tr>
-      <th colspan=""></th>
-      <th class="text-nowrap">ユーザーID</th>
-      <th class="text-nowrap">ニックネーム</th>
-      <th class="text-nowrap">メールアドレス</th>
-      <th class="text-nowrap">ステータス</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% users.each do |user| %>
-    <tr>
-      <td><%= image_tag user.get_profile_image, size:"50x50" %></td>
-      <td><%= user.id %></td>
-      <td>
-        <%= link_to  admin_user_path(user.id) do %>
-        <%= user.name %>
+<div class="table-responsive">
+  <table class="table table-borderless table-hover">
+    <thead class="bg-info">
+      <tr>
+        <th colspan=""></th>
+        <th class="text-nowrap">ユーザーID</th>
+        <th class="text-nowrap">ニックネーム</th>
+        <th class="text-nowrap">メールアドレス</th>
+        <th class="text-nowrap">ステータス</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% users.each do |user| %>
+      <tr>
+        <td><%= image_tag user.get_profile_image, size:"50x50" %></td>
+        <td><%= user.id %></td>
+        <td>
+          <%= link_to  admin_user_path(user.id) do %>
+          <%= user.name %>
+          <% end %>
+        </td>
+        <td><%= user.email %></td>
+        <% if user.is_deleted == false %>
+        <td class="text-success"><strong>有効</strong></td>
+        <% else %>
+        <td class="text-secondary"><strong>退会</strong></td>
         <% end %>
-      </td>
-      <td><%= user.email %></td>
-      <% if user.is_deleted == false %>
-      <td class="text-success"><strong>有効</strong></td>
-      <% else %>
-      <td class="text-secondary"><strong>退会</strong></td>
+      </tr>
       <% end %>
-    </tr>
-    <% end %>
-  </tbody>
-</table>
+    </tbody>
+  </table>
+</div>

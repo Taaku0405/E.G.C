@@ -1,25 +1,27 @@
 <div class="card-header"><i class="fas fa-user-secret"></i>会員</div>
-<table class="table table-borderless table-hover">
- <thead class="bg-info">
-  <tr>
-   <th class="text-nowrap">プロフィール写真</th>
-   <th class="text-nowrap">ニックネーム</th>
-   <th class="text-nowrap">フォロー</th>
-   <th class="text-nowrap">フォロワー</th>
-   <th colspan=""></th>
-   <th colspan=""></th>
-  </tr>
- </thead>
- <tbody>
-  <% users.each do |user| %>
-  <tr>
-   <td><%= image_tag user.get_profile_image, size:"50x50" %></td>
-   <td><%= user.name %></td>
-   <td class="text-center"><%= link_to user.followings.count, user_followings_path(user) %></td>
-   <td ><%= link_to user.followers.count, user_followers_path(user) %></td>
-   <td><%= render "public/relationships/btn", user: user %></td>
-   <td><%= link_to "詳細を見る", user_path(user.id), class: "btn btn-sm btn-outline-info px-5" %></td>
-  </tr>
-  <% end %>
- </tbody>
-</table>
+<div class="table-responsive">
+ <table class="table table-borderless table-hover">
+  <thead class="bg-info">
+   <tr>
+    <th class="text-nowrap">プロフィール写真</th>
+    <th class="text-nowrap">ニックネーム</th>
+    <th class="text-nowrap">フォロー</th>
+    <th class="text-nowrap">フォロワー</th>
+    <th colspan=""></th>
+    <th colspan=""></th>
+   </tr>
+  </thead>
+  <tbody>
+   <% users.each do |user| %>
+   <tr>
+    <td><%= image_tag user.get_profile_image, size:"50x50" %></td>
+    <td><%= user.name %></td>
+    <td class="text-center"><%= link_to user.followings.count, user_followings_path(user) %></td>
+    <td ><%= link_to user.followers.count, user_followers_path(user) %></td>
+    <td><%= render "public/relationships/btn", user: user %></td>
+    <td><%= link_to "詳細を見る", user_path(user.id), class: "btn btn-sm btn-outline-info px-5" %></td>
+   </tr>
+   <% end %>
+  </tbody>
+ </table>
+</div>
