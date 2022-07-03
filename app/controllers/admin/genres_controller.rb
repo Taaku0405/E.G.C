@@ -25,6 +25,15 @@ class Admin::GenresController < ApplicationController
     flash[:notice] = "ゲームジャンル情報を更新しました"
   end
 
+  def destroy
+   @genre = Genre.find(params[:id])
+   @genre.destroy
+   @genres = Genre.all
+   redirect_to admin_genres_path
+   flash[:notice] = "ゲームジャンルを削除しました"
+  end
+
+
   private
 
   def genre_params

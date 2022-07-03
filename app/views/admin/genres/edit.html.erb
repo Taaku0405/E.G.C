@@ -10,6 +10,7 @@
     <strong><%= f.label :"ジャンル名", class: "col-sm-9 col-form-label" %></strong>
     <span class="mr-5"><%= f.text_field :name, placeholder: "ジャンル名", class: "genre-form" %></span>
     <%= f.submit "変更を更新する", class: "btn btn-outline-success px-5" %>
+    <%= link_to "削除する", admin_genre_path(@genre.id), method: :delete, class: "btn btn-outline-danger px-5", data: { confirm: "ジャンルを削除してもよろしいですか？" } %>
     <% end %>
   </div>
 </div>
