@@ -1,7 +1,7 @@
 class Genre < ApplicationRecord
   has_many :posts, dependent: :destroy
 
-  validates :name, presence: true
+  validates :name, presence: true, uniqueness: true
 
   #検索機能の定義
   def self.search_for(content, method)

@@ -8,7 +8,7 @@ class User < ApplicationRecord
   has_many :post_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :group_users, dependent: :destroy
-  
+
   # フォローをした、されたの関係
   has_many :relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
   has_many :reverse_of_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
@@ -20,8 +20,8 @@ class User < ApplicationRecord
   has_one_attached :profile_image
 
   validates :name, length: { minimum: 2, maximum: 20 }, uniqueness: true
-  validates :introduction, length: { maximum: 200 }
-  
+  validates :introduction, length: { maximum: 300 }
+
   #プロフィール写真を設定しなかった場合のデフォルト写真
   def get_profile_image
     if profile_image.attached?
@@ -40,12 +40,12 @@ class User < ApplicationRecord
   def follow(user_id)
     relationships.create(followed_id: user_id)
   end
-  
+
   # フォローを外すときの処理
   def unfollow(user_id)
     relationships.find_by(followed_id: user_id).destroy
   end
-  
+
   # フォローしているか判定
   def following?(user)
     followings.include?(user)
@@ -58,7 +58,7 @@ class User < ApplicationRecord
       user.name = "guestuser"
     end
    end
-  
+
   #検索機能の定義
   def self.search_for(content, method)
     if method == "perfect"
@@ -71,7 +71,7 @@ class User < ApplicationRecord
       User.where("name LIKE ?", "%" + content + "%")
     end
   end
-  
+
   #会員ステータスの定義
   def active_for_authentication?
     super && (is_deleted == false)

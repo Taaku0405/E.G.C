@@ -12,10 +12,14 @@ class Admin::GenresController < ApplicationController
 
   def create
     @genre = Genre.new(genre_params)
-    @genre.save
-    @genres = Genre.all
-    redirect_to request.referer
-    flash[:notice] = "ゲームジャンルを追加しました"
+    if @genre.save
+      @genres = Genre.all
+      redirect_to request.referer
+      flash[:notice] = "ゲームジャンルを追加しました"
+    else
+      redirect_to request.referer
+      flash[:notice] = "ゲームジャンルの追加に失敗しました。同じ名前の使用または空白の場合は追加できません"
+    end
   end
 
   def update
