@@ -31,12 +31,18 @@ class Public::UsersController < ApplicationController
   end
 
   def withdrawal
-     @user = User.find(params[:id])
+    @user = User.find(params[:id])
     # is_deletedカラムをtrueに変更することにより削除フラグを立てる
     @user.update(is_deleted: true)
     reset_session
     redirect_to root_path
     flash[:notice] = "退会処理を実行いたしました"
+  end
+
+  def favorites
+    @user = User.find(params[:id])
+    favorites= Favorite.where(user_id: @user.id).pluck(:post_id)
+    @favorite_posts = Post.find(favorites)
   end
 
   private

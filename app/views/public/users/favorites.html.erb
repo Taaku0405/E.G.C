@@ -1,0 +1,32 @@
+<h3 class="d-inline-block px-4 mx-5 mb-3 text-primary"><i class="fab fa-gratipay"></i>いいね一覧</h3>
+<div class="table-responsive">
+  <table class="table table-borderless">
+    <thead class="bg-info">
+      <tr>
+        <th></th>
+        <th class="text-nowrap">投稿日時</th>
+        <th class="text-nowrap">ゲーム名</th>
+        <th class="text-nowrap">ジャンル</th>
+        <th class="text-nowrap">投稿者</th>
+        <th class="text-nowrap">コメント数</th>
+        <th class="text-nowrap">いいね</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @favorite_posts.each do |post|%>
+      <tr>
+        <td><%= image_tag post.user.get_profile_image, size: "50x50" %></td>
+        <td><%= post.created_at.strftime('%Y/%m/%d %H:%M:%S') %></td>
+        <td>
+          <%= link_to post_path(post) do %>
+          <u class="hover-link"><%= post.name %></u>
+          <% end %>
+        </td>
+        <td><%= post.genre.name %></td>
+        <td><%= post.user.name %></td>
+        <td><%= link_to "#{post.post_comments.count} コメント", post_path(post.id) %></td>
+        <td><%= post.favorites.count %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>

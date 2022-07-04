@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     sessions: "admin/sessions"
   }
-  
+
   devise_scope :user do
     post "users/guest_sign_in", to: "users/sessions#guest_sign_in"
   end
@@ -23,7 +23,7 @@ Rails.application.routes.draw do
    namespace :admin do
    resources :users, only: [:index, :show, :edit, :update]
 
-   resources :genres 
+   resources :genres
 
    resources :posts, except: [:create] do
      resources :post_comments, only: [:destroy]
@@ -38,6 +38,9 @@ Rails.application.routes.draw do
     get "/users/:id/unsubscribe" => "users#unsubscribe", as: "unsubscribe"
     # 論理削除用のルーティング
     patch "/users/:id/withdrawal" => "users#withdrawal", as: "withdrawal"
+    member do
+      get :favorites
+    end
 
     resource :relationships, only: [:create, :destroy]
   	 get 'followings' => 'relationships#followings', as: 'followings'
