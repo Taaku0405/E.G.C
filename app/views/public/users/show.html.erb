@@ -1,16 +1,16 @@
 <div class="container">
  <h3 class="d-inline-block px-4 mx-5 mb-3 text-primary"><i class="fas fa-user-secret"></i><%= @user.name %>さんの会員詳細</h3>
  <div class="row px-5 mt-4">
-  <h4 class="col-2">登録情報</h4>
+  <h4 class="col-md-2">登録情報</h4>
   <% if @user.id == current_user.id %>
-  <%= link_to "編集する", edit_user_path(current_user.id), class: "btn btn-outline-success px-5" %>
+  <%= link_to "編集する", edit_user_path(current_user.id), class: "btn btn-outline-success mr-5 px-5" %>
   <% end %>
-  <%=link_to"いいね一覧",favorites_user_path(@user), class: "btn btn-outline-info px-5" %>
+  <%=link_to"いいね一覧",favorites_user_path(@user), class: "btn btn-outline-info mr-5 px-5" %>
   <%= render "public/relationships/btn", user: @user %>
  </div>
 
  <div class="row my-4 px-5">
-  <table class="table table-bordered col-6 mb-5">
+  <table class="table table-bordered col-md-6 mb-5">
    <tr>
     <th class="text-nowrap">ニックネーム</th>
     <td><%= @user.name %></td>

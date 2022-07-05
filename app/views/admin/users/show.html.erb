@@ -1,8 +1,8 @@
 <div class="container">
   <h3 class="d-inline-block px-4 mx-5 mb-3 text-primary"><i class="fas fa-user-secret"></i><%= @user.name %>さんの会員詳細</h3>
   <div class="row px-5 mt-4">
-    <h4 class="col-2">登録情報</h4>
-    <%= link_to "会員情報を編集", edit_admin_user_path(@user.id), class: "btn btn-outline-success px-5 offset-2" %>
+    <h4 class="col-md-2">登録情報</h4>
+    <%= link_to "会員情報を編集", edit_admin_user_path(@user.id), class: "btn btn-outline-success mr-5 px-5" %>
   </div>
   <div class="row my-4 px-5">
     <table class="table table-bordered col-6 mb-5">
@@ -27,7 +27,7 @@
         <% end %>
       </tr>
     </table>
-    <div class="col-5 offset-1">
+    <div class="col-md-5 offset-1">
       <div class="row">
         <%= image_tag @user.get_profile_image, size:"350x300" %>
       </div>

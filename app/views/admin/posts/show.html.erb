@@ -1,10 +1,10 @@
 <div class="container">
   <h3 class="d-inline-block px-4 mx-5 mb-3 text-primary"><i class="fas fa-gavel"></i>ゲーム投稿詳細</h3>
   <div class="row">
-    <div class="col-lg-3">
-      <%= image_tag @post.user.get_profile_image, size: "450x430" %>
+    <div class="col-md-3">
+      <%= image_tag @post.user.get_profile_image, size: "400x400" %>
     </div>
-    <div class="col-lg-7 offset-lg-2">
+    <div class="col-md-7 offset-2">
       <table class="table table-borderless">
         <tr>
           <th class="text-nowrap">投稿者</th>
@@ -33,12 +33,12 @@
           </td>
         </tr>
       </table>
-      
-      <div class="text-center">
-        <%= link_to "投稿情報を削除する", admin_post_path(@post.id), method: :delete,class: "btn btn-outline-danger px-5", data: { confirm: "投稿を削除してもよろしいですか？" } %>
-        <%= link_to "投稿情報を編集する", edit_admin_post_path(@post.id), class: "btn btn-outline-success px-5 offset-2" %>
+
+      <div class="row">
+        <%= link_to "投稿情報を編集する", edit_admin_post_path(@post.id), class: "btn btn-outline-success mr-5 px-5" %>
+        <%= link_to "投稿情報を削除する", admin_post_path(@post.id), method: :delete,class: "btn btn-outline-danger mr-5 px-5", data: { confirm: "投稿を削除してもよろしいですか？" } %>
       </div>
-      
+
       <div class="post-comments-index m-3">
         <%= render "admin/post_comments/index", post: @post %>
       </div>

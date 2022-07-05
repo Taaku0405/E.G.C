@@ -5,22 +5,22 @@
   </div>
   <%= form_with model: @user, url: admin_user_path(@user.id), method: :patch do |f| %>
   <div class="form-group">
-    <strong><%= f.label :id, "会員ID", class: "col-sm-3 col-form-label" %></strong>
-    <span><%= f.label @user.id, class: "col-sm-3 col-form-label" %></span>
+    <strong><%= f.label :id, "会員ID", class: "col-md-3 col-form-label" %></strong>
+    <span><%= f.label @user.id, class: "col-md-3 col-form-label" %></span>
   </div>
 
   <div class="form-group">
-    <strong><%= f.label :"ニックネーム", class: "col-sm-3 col-form-label" %></strong>
+    <strong><%= f.label :"ニックネーム", class: "col-md-3 col-form-label" %></strong>
     <span><%= f.text_field :name, placeholder: "ニックネームを入力" %></span>
   </div>
 
   <div class="form-group">
-    <strong><%= f.label :"メールアドレス", class: "col-sm-3 col-form-label" %></strong>
+    <strong><%= f.label :"メールアドレス", class: "col-md-3 col-form-label" %></strong>
     <span><%= f.email_field :email, placeholder: "sample@example.com" %></span>
   </div>
 
   <div class="form-group">
-    <strong><%= f.label :"ステータス", class: "col-sm-3 col-form-label" %></strong>
+    <strong><%= f.label :"ステータス", class: "col-md-3 col-form-label" %></strong>
     <span>
       <%= f.radio_button :is_deleted, false %>有効
       <%= f.radio_button :is_deleted, true %>退会
@@ -28,7 +28,7 @@
   </div>
 
   <div class="form-group d-flex">
-    <div class="col-2"></div>
+    <div class="col-md-2"></div>
     <%= f.submit "変更を更新する", class: "btn btn-outline-success px-5" %>
   </div>
   <% end %>
