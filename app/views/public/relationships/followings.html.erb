@@ -1,6 +1,8 @@
+<div class="container">
 <h3 class="d-inline-block px-4 mx-5 mb-3 text-primary"><i class="fas fa-dragon"></i>フォローしているユーザー</h3>
 <% if @users.exists? %>
 <%= render "public/users/index", users: @users %>
 <% else %>
 <p>ユーザーはいません</p>
 <% end %>
+</div>

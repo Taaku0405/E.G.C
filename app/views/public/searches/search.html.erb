@@ -1,3 +1,4 @@
+<div class="container">
 <% if @model == "user" %>
 <h3 class="d-inline-block px-4 mx-5 mb-3 text-primary"> <i class="fas fa-users"></i>ユーザー検索結果 "<%= @content %>"</h3>
 <%= render "public/users/index", users: @records %>
@@ -5,3 +6,4 @@
 <h3 class="d-inline-block px-4 mx-5 mb-3 text-primary"><i class="fas fa-gamepad"></i>投稿検索結果 "<%= @content %>"</h3>
 <%= render "public/posts/index", posts: @records %>
 <% end %>
+</div>
