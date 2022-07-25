@@ -1,0 +1,18 @@
+<div class="container">
+  <h3 class="d-inline-block px-4 mx-5 mb-3 text-primary"><i class="fas fa-comment-medical"></i>グループチャット</h3>
+</div>
+<div class="row">
+  <div class="col-md-10">
+  <%= @chats.each do |chat| %>
+  <%= image_tag chat.user.get_profile_image, size: "100x80" %>
+  <%= chat.user.name %><br>
+  <%= chat.created_at.strftime('%Y/%m/%d %H:%M:%S') %><br>
+  <%= chat.message %><br>
+  <% end %>
+    <%= form_with model: @chat, url: group_chats_path, method: :post, class: "js-form", local: false do |f| %>
+    <%= f.text_area :message, placeholder: "メッセージを入力", class: "offset-4" %>
+    <%= f.submit "メッセージを送信", class: "btn btn-sm btn-outline-warning mt-20 pull-right" %>
+    <% end %>
+  </div>
+  </div>
+</div>

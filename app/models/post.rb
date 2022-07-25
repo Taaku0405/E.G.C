@@ -5,8 +5,8 @@ class Post < ApplicationRecord
   belongs_to :genre
 
   validates :name, presence: true
-  validates :introduction, presence: :true
-  
+  validates :introduction, length: { maximum: 500 }
+
   #いいねの定義
   def favorited_by?(user)
     favorites.where(user_id: user.id).exists?

@@ -5,7 +5,7 @@
   <% if @user.id == current_user.id %>
   <%= link_to "編集する", edit_user_path(current_user.id), class: "btn btn-outline-success mr-5 px-5" %>
   <% end %>
-  <%=link_to"いいね一覧",favorites_user_path(@user), class: "btn btn-outline-info mr-5 px-5" %>
+  <%= link_to "いいね一覧", favorites_user_path(@user), class: "btn btn-outline-info mr-5 px-5" %>
   <%= render "public/relationships/btn", user: @user %>
  </div>
 

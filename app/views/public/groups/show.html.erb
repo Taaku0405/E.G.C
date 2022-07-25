@@ -18,7 +18,7 @@
           <th class="text-nowrap">メンバー</th>
           <td>
             <% @group.users.each do |user| %>
-            <li style="list-style: none;"><%= user.name %></li>
+            <li style="list-style: none;">・<%= user.name %></li>
             <% end %>
           </td>
         </tr>
@@ -26,13 +26,15 @@
 
       <div class="row">
         <% if @group.is_owned_by?(current_user) %>
-        <%= link_to "グループを編集する", edit_group_path(@group), class: "btn btn-outline-success mr-5 px-5" %>
-        <%= link_to "イベント登録", new_group_event_notice_path(@group), class: "btn btn-outline-info mr-5 px-5" %>
+        <%= link_to "グループを編集する", edit_group_path(@group), class: "btn btn-outline-success btn-md mr-3" %>
+        <%= link_to "イベント登録", new_group_event_notice_path(@group), class: "btn btn-outline-info btn-md mr-3" %>
+        <%= link_to "グループチャット", group_chats_path(@group), class: "btn btn-outline-dark btn-md mr-3" %>
         <% else %>
         <% if @group.includesUser?(current_user) %>
-        <%= link_to "グループから脱退する", group_group_users_path(@group), method: :delete, class: "btn btn-outline-danger mr-5 px-5" %>
+        <%= link_to "グループから脱退する", group_group_users_path(@group), method: :delete, class: "btn btn-outline-danger btn-md mr-3" %>
+        <%= link_to "グループチャット", group_chats_path(@group), class: "btn btn-outline-dark btn-md mr-3" %>
         <% else %>
-        <%= link_to "グループに参加する", group_group_users_path(@group), method: :post, class: "btn btn-outline-warning mr-5 px-5" %>
+        <%= link_to "グループに参加する", group_group_users_path(@group), method: :post, class: "btn btn-outline-warning btn-md mr-3" %>
         <% end %>
         <% end %>
       </div>
