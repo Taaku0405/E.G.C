@@ -56,8 +56,11 @@ Rails.application.routes.draw do
      resources :groups, except: [:destroy] do
        resource :group_users, only: [:create, :destroy]
        resources :event_notices, only: [:new, :create]
-       resources :chats, except: [:edit]
+       resources :chats, only: [:create, :destroy]
        get "event_notices" => "event_notices#sent"
+       member do
+       get :group_chat
+     end
      end
 
       get 'search' => 'searches#search'

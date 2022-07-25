@@ -1,0 +1,3 @@
+console.log("test")
+$('#chat_message').val("")
+$('.chats-index').html("<%= j(render "public/chats/index",  group: @chat.group) %>")

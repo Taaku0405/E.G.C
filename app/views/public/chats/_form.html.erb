@@ -1,0 +1,4 @@
+<%= form_with(model:[group, chat], local: false) do |f| %>
+<%= f.text_area :message, rows:'5',placeholder: "メッセージを入力", class: "w-100" %>
+<%= f.submit "メッセージを送信", class: "btn btn-sm btn-outline-warning mt-20 pull-right" %>
+<% end %>

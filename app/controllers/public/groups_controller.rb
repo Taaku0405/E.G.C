@@ -17,6 +17,11 @@ class Public::GroupsController < ApplicationController
   def edit
   end
 
+  def group_chat
+    @group = Group.find(params[:id])
+    @chat = Chat.new
+  end
+
   def create
     @group = Group.new(group_params)
     @group.owner_id = current_user.id
