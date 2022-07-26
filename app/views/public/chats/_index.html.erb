@@ -4,6 +4,6 @@
 <%= chat.created_at.strftime('%Y/%m/%d %H:%M:%S') %><br>
 <%= chat.message %><br>
 <% if chat.user == current_user %>
-<%= link_to "メッセージを削除", group_chat_path(group, chat), method: :delete, class: "btn btn-outline-danger pull-right", remote: true, data: {confirm: "本当に削除しますか？"}  %><br>
+<%= link_to "メッセージを削除", group_chat_path(group, chat), method: :delete, class: "btn btn-outline-danger btn-sm pull-right", remote: true, data: {confirm: "本当に削除しますか？"}  %><br>
 <% end %>
 <% end %>
